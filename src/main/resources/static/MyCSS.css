@@ -1,0 +1,14 @@
+#mainButton{
+    background-color: azure;
+    margin: 10px;
+    width: 400px;
+    height: 120px;
+    font-size: 30pt;
+    font-weight: bold;
+}
+
+#homePageButtons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
