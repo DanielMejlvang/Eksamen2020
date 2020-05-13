@@ -35,4 +35,4 @@ build/
 .vscode/
 src/main/resources/application.properties
 *.properties
-git update-index --skip-worktree application.properties
+git update-index --assume-unchanged application.properties
