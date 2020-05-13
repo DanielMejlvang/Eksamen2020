@@ -21,6 +21,7 @@ target/
 *.properties
 .application.properties
 
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
@@ -34,3 +35,4 @@ build/
 .vscode/
 src/main/resources/application.properties
 *.properties
+git update-index --skip-worktree application.properties
