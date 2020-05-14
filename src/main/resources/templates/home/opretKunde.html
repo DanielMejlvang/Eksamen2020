@@ -4,28 +4,32 @@
     <meta charset="UTF-8">
     <title>Opret kunde</title>
     <link rel="stylesheet" type="text/css" href="MyCSS.css">
-    <style>
-        .h4{
-            color: antiquewhite;
-        }
-    </style>
 </head>
 <body>
-    <div id="opretForm">
-        <h4>Hello</h4>
-        <form action="/opretKunde" method="post">
+    <h2>Opret ny kunde</h2>
+    <form action="/opretKunde" method="post">
+        <div id="opretForm">
+            Fornavn
             <input type="text" name="fornavn"><br>
+            Efternavn
             <input type="text" name="efternavn"><br>
+            Telefon
             <input type="text" name="telefon"><br>
+            Email
             <input type="text" name="email"><br>
+            Kørekort nr.
             <input type="text" name="korekort"><br>
+            Gade
             <input type="text" name="gade"><br>
+            Postnummer
             <input type="text" name="postnummer"><br>
+            By
             <input type="text" name="bynavn"><br>
+            Land
             <input type="text" name="land"><br>
             <input type="submit" value="Gem kunde">
-        </form>
-    </div>
+        </div>
+    </form>
     <a href="/">
         <button type = "button" id="homepage">
             Forside

@@ -23,22 +23,7 @@
     border: 1px black;
     border-radius: 4px;
 }
-#opretForm{
-    width: auto;
-    height: auto;
-    overflow: hidden;
-    display: table;
-}
-#venstreForm{
-    width: 150px;
-    float: left;
-    display: table-cell;
-}
-#opretFormTable{
-    height: 40px;
-}
-#hojreForm{
+#opretForm {
     width: 300px;
-    display: table-cell;
-    float: left;
+    text-align: right;
 }
