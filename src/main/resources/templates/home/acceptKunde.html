@@ -7,15 +7,15 @@
 <body>
     <h3>Dette er de indtastede informationer</h3>
     <form action="/acceptKunde" method="post">
-        <input type="text" th:value="${nyKunde.fornavn}">
-        <input type="text" th:value="${nyKunde.efternavn}">
-        <input type="text" th:value="${nyKunde.telefon}">
-        <input type="text" th:value="${nyKunde.email}">
-        <input type="text" th:value="${nyKunde.korekort}">
-        <input type="text" th:value="${nyKunde.gade}">
-        <input type="text" th:value="${nyKunde.postnummer}">
-        <input type="text" th:value="${nyKunde.bynavn}">
-        <input type="text" th:value="${nyKunde.land}">
+        <input type="text" name="fornavn" th:value="${nyKunde.fornavn}">
+        <input type="text" name="efternavn" th:value="${nyKunde.efternavn}">
+        <input type="text" name="telefon" th:value="${nyKunde.telefon}">
+        <input type="text" name="email" th:value="${nyKunde.email}">
+        <input type="text" name="korekort" th:value="${nyKunde.korekort}">
+        <input type="text" name="gade" th:value="${nyKunde.gade}">
+        <input type="text" name="postnummer" th:value="${nyKunde.postnummer}">
+        <input type="text" name="bynavn" th:value="${nyKunde.bynavn}">
+        <input type="text" name="land" th:value="${nyKunde.land}">
         <h4>Er de indtastede informationer korrekt?</h4>
         <input type="submit" value="Accept" onclick="opret()">
     </form>
