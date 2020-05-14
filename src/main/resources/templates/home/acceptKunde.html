@@ -3,25 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Opret kunde</title>
+    <link rel="stylesheet" type="text/css" href="MyCSS.css">
 </head>
 <body>
     <h3>Dette er de indtastede informationer</h3>
     <form action="/acceptKunde" method="post">
-        <input type="text" name="fornavn" th:value="${nyKunde.fornavn}">
-        <input type="text" name="efternavn" th:value="${nyKunde.efternavn}">
-        <input type="text" name="telefon" th:value="${nyKunde.telefon}">
-        <input type="text" name="email" th:value="${nyKunde.email}">
-        <input type="text" name="korekort" th:value="${nyKunde.korekort}">
-        <input type="text" name="gade" th:value="${nyKunde.gade}">
-        <input type="text" name="postnummer" th:value="${nyKunde.postnummer}">
-        <input type="text" name="bynavn" th:value="${nyKunde.bynavn}">
-        <input type="text" name="land" th:value="${nyKunde.land}">
+        <input type="text" name="fornavn" th:value="${nyKunde.fornavn}" readonly>
+        <input type="text" name="efternavn" th:value="${nyKunde.efternavn}" readonly>
+        <input type="text" name="email" th:value="${nyKunde.email}" readonly>
+        <input type="text" name="korekort" th:value="${nyKunde.korekort}" readonly>
+        <input type="text" name="gade" th:value="${nyKunde.gade}" readonly>
+        <input type="text" name="postnummer" th:value="${nyKunde.postnummer}" readonly>
+        <input type="text" name="bynavn" th:value="${nyKunde.bynavn}" readonly>
+        <input type="text" name="land" th:value="${nyKunde.land}" readonly>
         <h4>Er de indtastede informationer korrekt?</h4>
         <input type="submit" value="Accept" onclick="opret()">
+        <button type="button" onclick="tilbage()">Tilbage</button>
     </form>
+    <a href="/">
+        <button type = "button" id="homepage">
+            Forside
+        </button>
+    </a>
     <script>
         function opret() {
             alert("Kunde er blevet gemt!");
+        }
+        function tilbage() {
+            window.history.back();
         }
     </script>
 </body>
