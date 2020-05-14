@@ -12,3 +12,10 @@
     justify-content: center;
     align-items: center;
 }
+
+#homepage{
+    position: fixed;
+    top: 1em;
+    right: 1em;
+    background-color: burlywood;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Opret kunde</title>
+</head>
+<body>
+    <h3>Dette er de indtastede informationer</h3>
+    <form action="/acceptKunde" method="post">
+        <input type="text" th:value="${nyKunde.fornavn}">
+        <input type="text" th:value="${nyKunde.efternavn}">
+        <input type="text" th:value="${nyKunde.telefon}">
+        <input type="text" th:value="${nyKunde.email}">
+        <input type="text" th:value="${nyKunde.korekort}">
+        <input type="text" th:value="${nyKunde.gade}">
+        <input type="text" th:value="${nyKunde.postnummer}">
+        <input type="text" th:value="${nyKunde.bynavn}">
+        <input type="text" th:value="${nyKunde.land}">
+        <h4>Er de indtastede informationer korrekt?</h4>
+        <input type="submit" value="Accept" onclick="opret()">
+    </form>
+    <script>
+        function opret() {
+            alert("Kunde er blevet gemt!");
+        }
+    </script>
+</body>
+</html>

@@ -11,7 +11,7 @@ public class Kunde {
     private String efternavn;
     private String telefon;
     private String email;
-    private String kørekort;
+    private String korekort;
     private String gade;
     private String postnummer;
     private String bynavn;
@@ -20,13 +20,13 @@ public class Kunde {
     public Kunde() {
     }
 
-    public Kunde(int ku_id, String fornavn, String efternavn, String telefon, String email, String kørekort, String gade, String postnummer, String bynavn, String land) {
+    public Kunde(int ku_id, String fornavn, String efternavn, String telefon, String email, String korekort, String gade, String postnummer, String bynavn, String land) {
         this.ku_id = ku_id;
         this.fornavn = fornavn;
         this.efternavn = efternavn;
         this.telefon = telefon;
         this.email = email;
-        this.kørekort = kørekort;
+        this.korekort = korekort;
         this.gade = gade;
         this.postnummer = postnummer;
         this.bynavn = bynavn;
@@ -73,12 +73,12 @@ public class Kunde {
         this.email = email;
     }
 
-    public String getKørekort() {
-        return kørekort;
+    public String getKorekort() {
+        return korekort;
     }
 
-    public void setKørekort(String kørekort) {
-        this.kørekort = kørekort;
+    public void setKorekort(String kørekort) {
+        this.korekort = kørekort;
     }
 
     public String getGade() {
