@@ -7,20 +7,25 @@
 <body>
     <h3>Dette er de indtastede informationer</h3>
     <form action="/acceptAutocamper" method="post">
-        <input type="text" name="a_type" th:value="${nyAutocamper.a_type}">
-        <input type="text" name="a_maerke" th:value="${nyAutocamper.a_maerke}">
-        <input type="text" name="a_model" th:value="${nyAutocamper.a_model}">
-        <input type="text" name="a_odometer" th:value="${nyAutocamper.a_odometer}">
-        <input type="text" name="a_senge" th:value="${nyAutocamper.a_senge}">
-        <input type="text" name="a_nummerplade" th:value="${nyAutocamper.a_nummerplade}">
-        <input type="text" name="a_pris" th:value="${nyAutocamper.a_pris}">
+        <input type="text" name="a_type" th:value="${nyAutocamper.a_type}" readonly>
+        <input type="text" name="a_maerke" th:value="${nyAutocamper.a_maerke}" readonly>
+        <input type="text" name="a_model" th:value="${nyAutocamper.a_model}" readonly>
+        <input type="text" name="a_odometer" th:value="${nyAutocamper.a_odometer}" readonly>
+        <input type="text" name="a_senge" th:value="${nyAutocamper.a_senge}" readonly>
+        <input type="text" name="a_nummerplade" th:value="${nyAutocamper.a_nummerplade}" readonly>
+        <input type="text" name="a_pris" th:value="${nyAutocamper.a_pris}" readonly>
         <h4>Er de indtastede informationer korrekte?</h4>
         <input type="submit" value="Accept" onclick="opret()">
+        <button type="button" onclick="tilbage()">Tilbage</button>
     </form>
 
     <script>
         function opret() {
             alert("Autocamper er blevet gemt!")
+        }
+
+        function tilbage() {
+            window.history.back();
         }
     </script>
 </body>
