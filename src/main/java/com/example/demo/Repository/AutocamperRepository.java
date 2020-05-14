@@ -30,9 +30,9 @@ public class AutocamperRepository {
 
     //Tilføjer en autocamper til autocamper tabellen i databasen
     public Autocamper tilfojAutocamper(Autocamper a){
-        String sql = "INSERT INTO autocampere (a_type, a_maerke, a_model, a_odometer, a_nummerplade, a_pris) " +
+        String sql = "INSERT INTO autocampere (a_type, a_maerke, a_model, a_odometer, a_senge, a_nummerplade, a_pris) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?)";
-        template.update(sql, a.getType(),a.getMaerke(),a.getModel(),a.getOdometer(),a.getNummerplade(),a.getPris());
+        template.update(sql, a.getA_type(),a.getA_maerke(),a.getA_model(),a.getA_odometer(), a.getA_senge(), a.getA_nummerplade(),a.getA_pris());
         return null;
     }
 
