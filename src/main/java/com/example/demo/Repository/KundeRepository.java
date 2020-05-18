@@ -30,7 +30,7 @@ public class KundeRepository {
     }
 
     //metode til tilføje kunde til databasen
-    public void tilfojKunde(Kunde kunde) {
+    public Boolean tilfojKunde(Kunde kunde) {
         //tilføj data i kunder-tabellen
         String sql = "INSERT INTO kunder (fornavn, efternavn, telefon, email, korekort, gade, postnummer)" +
                      "VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -38,7 +38,7 @@ public class KundeRepository {
                         kunde.getKorekort(), kunde.getGade(), kunde.getPostnummer());
         //tilføj data til postnumre, ignorer hvis allerede eksistere
         sql = "INSERT IGNORE INTO postnumre VALUES (?, ?, ?)";
-        template.update(sql, kunde.getPostnummer(), kunde.getBynavn(), kunde.getLand());
+        return template.update(sql, kunde.getPostnummer(), kunde.getBynavn(), kunde.getLand()) < 0;
     }
 
     //metode til at slette en kunde fra databasen

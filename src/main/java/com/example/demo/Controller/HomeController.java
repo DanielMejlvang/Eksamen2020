@@ -43,8 +43,11 @@ public class HomeController {
 
     @PostMapping("/acceptKunde")
     public String acceptKunde(@ModelAttribute Kunde kunde) {
-        kundeService.tilfojKunde(kunde);
-        return "redirect:/";
+        if (kundeService.tilfojKunde(kunde)) {
+            return "redirect:/";
+        } else {
+            return "opretFejl";
+        }
     }
 
     @GetMapping("/autocampere")

@@ -25,8 +25,8 @@ public class KundeService {
     }
 
     //metode til tilføje kunde til databasen
-    public void tilfojKunde(Kunde kunde) {
-        kr.tilfojKunde(kunde);
+    public Boolean tilfojKunde(Kunde kunde) {
+        return kr.tilfojKunde(kunde);
     }
 
     //metode til at slette en kunde fra databasen
