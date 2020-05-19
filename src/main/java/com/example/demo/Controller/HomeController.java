@@ -46,7 +46,7 @@ public class HomeController {
         if (kundeService.tilfojKunde(kunde)) {
             return "redirect:/";
         } else {
-            return "opretFejl";
+            return "home/opretFejl";
         }
     }
 

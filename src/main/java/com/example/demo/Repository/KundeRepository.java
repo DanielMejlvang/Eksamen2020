@@ -31,20 +31,21 @@ public class KundeRepository {
 
     //metode til tilføje kunde til databasen
     public Boolean tilfojKunde(Kunde kunde) {
-        //tilføj data i kunder-tabellen
-        String sql = "INSERT INTO kunder (fornavn, efternavn, telefon, email, korekort, gade, postnummer)" +
-                     "VALUES (?, ?, ?, ?, ?, ?, ?)";
-        template.update(sql, kunde.getFornavn(), kunde.getEfternavn(), kunde.getTelefon(), kunde.getEmail(),
-                        kunde.getKorekort(), kunde.getGade(), kunde.getPostnummer());
         //tilføj data til postnumre, ignorer hvis allerede eksistere
-        sql = "INSERT IGNORE INTO postnumre VALUES (?, ?, ?)";
-        return template.update(sql, kunde.getPostnummer(), kunde.getBynavn(), kunde.getLand()) < 0;
+        String sql = "INSERT IGNORE INTO postnumre VALUES (?, ?, ?)";
+        template.update(sql, kunde.getPostnummer(), kunde.getBynavn(), kunde.getLand());
+
+        //tilføj data i kunder-tabellen
+        sql = "INSERT INTO kunder (fornavn, efternavn, telefon, email, korekort, gade, postnummer)" +
+              "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        return template.update(sql, kunde.getFornavn(), kunde.getEfternavn(), kunde.getTelefon(), kunde.getEmail(),
+                        kunde.getKorekort(), kunde.getGade(), kunde.getPostnummer()) > 0;
     }
 
     //metode til at slette en kunde fra databasen
     public Boolean sletKunde(int id) {
         String sql = "DELETE FROM kunder WHERE ku_id = ?";
         //return boolean om sletning gik til
-        return template.update(sql, id) < 0;
+        return template.update(sql, id) > 0;
     }
 }
