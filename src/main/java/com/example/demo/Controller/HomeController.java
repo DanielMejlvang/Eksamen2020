@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class HomeController {
     @Autowired
@@ -32,6 +34,13 @@ public class HomeController {
     @GetMapping("/kunder")
     public String kunde() {
         return "home/kunder";
+    }
+
+    @GetMapping("/kundeliste")
+    public String kundeliste(@ModelAttribute Kunde kunde, Model model) {
+        List<Kunde> kundeliste = kundeService.listKunder();
+        model.addAttribute("kundeliste", kundeliste);
+        return "home/kundeliste";
     }
 
     @GetMapping("/opretKunde")

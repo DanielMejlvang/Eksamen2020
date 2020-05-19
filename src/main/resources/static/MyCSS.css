@@ -28,3 +28,31 @@
     width: 300px;
     text-align: right;
 }
+table{
+    border-collapse: collapse;
+    width: 85%;
+}
+th{
+    background-color: lightblue;
+}
+td, th{
+    border: 1px solid black;
+    text-align: left;
+    padding: 2px;
+}
+tr:nth-child(even){
+    background-color: lightgray;
+}
+tr{
+    height: 40px;
+}
+#sletButton {
+    background-color: crimson;
+    color:white;
+    margin-bottom: 1px;
+}
+#aendreButton {
+    background-color: cornflowerblue;
+    color:black;
+    margin-bottom: 1px;
+}

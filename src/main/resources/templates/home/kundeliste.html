@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Kundeliste</title>
+    <link rel="stylesheet" type="text/css" href="MyCSS.css">
+</head>
+<body>
+    <h2>Liste over kundeinformationer</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Fornavn</th>
+                <th>Efternavn</th>
+                <th>Telefon</th>
+                <th>Email</th>
+                <th>Kørekort nr.</th>
+                <th>Gade</th>
+                <th>Postnummer</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="kunde: ${kundeliste}">
+                <td th:text="${kunde.ku_id}" />
+                <td th:text="${kunde.fornavn}" />
+                <td th:text="${kunde.efternavn}" />
+                <td th:text="${kunde.telefon}" />
+                <td th:text="${kunde.email}" />
+                <td th:text="${kunde.korekort}" />
+                <td th:text="${kunde.gade}" />
+                <td th:text="${kunde.postnummer}" />
+                <td>
+                    <a th:href="@{'/sletKunde/'+${kunde.ku_id}}">
+                        <button type="button" id = "sletButton" onclick = "return confirm('Er du sikker?')">
+                            Slet
+                        </button>
+                    </a>
+                    <br />
+                    <a th:href="@{'/aendreKunde/'+${kunde.ku_id}}">
+                        <button type="button" id = "aendreButton">
+                            Ændre
+                        </button>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
