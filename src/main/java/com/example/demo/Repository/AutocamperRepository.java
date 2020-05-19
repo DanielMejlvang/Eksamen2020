@@ -29,17 +29,16 @@ public class AutocamperRepository {
     }
 
     //Tilføjer en autocamper til autocamper tabellen i databasen
-    public Autocamper tilfojAutocamper(Autocamper a){
+    public Boolean tilfojAutocamper(Autocamper a){
         String sql = "INSERT INTO autocampere (a_type, a_maerke, a_model, a_odometer, a_senge, a_nummerplade, a_pris) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?)";
-        template.update(sql, a.getA_type(),a.getA_maerke(),a.getA_model(),a.getA_odometer(), a.getA_senge(), a.getA_nummerplade(),a.getA_pris());
-        return null;
+        return template.update(sql, a.getA_type(),a.getA_maerke(),a.getA_model(),a.getA_odometer(), a.getA_senge(), a.getA_nummerplade(),a.getA_pris()) > 0;
     }
 
     //Sletter en autocamper fra databasen
     public Boolean sletAutocamper(int id){
         String sql = "DELETE FROM autocampere WHERE a_id = ?";
         //Returnerer sandt hvis sletningen gik igennem
-        return template.update(sql, id) < 0;
+        return template.update(sql, id) > 0;
     }
 }

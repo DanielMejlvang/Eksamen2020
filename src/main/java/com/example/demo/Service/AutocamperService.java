@@ -20,7 +20,7 @@ public class AutocamperService {
         return ar.findAutocamperMedId(id);
     }
 
-    public Autocamper tilfojAutocamper(Autocamper autocamper){
+    public Boolean tilfojAutocamper(Autocamper autocamper){
         return ar.tilfojAutocamper(autocamper);
     }
 

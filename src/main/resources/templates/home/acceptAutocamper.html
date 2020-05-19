@@ -11,19 +11,14 @@
         <input type="text" name="a_maerke" th:value="${nyAutocamper.a_maerke}" readonly>
         <input type="text" name="a_model" th:value="${nyAutocamper.a_model}" readonly>
         <input type="number" name="a_odometer" th:value="${nyAutocamper.a_odometer}" readonly>
-        <input type="text" name="a_senge" th:value="${nyAutocamper.a_senge}" readonly>
+        <input type="number" name="a_senge" th:value="${nyAutocamper.a_senge}" readonly>
         <input type="text" name="a_nummerplade" th:value="${nyAutocamper.a_nummerplade}" readonly>
-        <input type="text" name="a_pris" th:value="${nyAutocamper.a_pris}" readonly>
+        <input type="number" name="a_pris" th:value="${nyAutocamper.a_pris}" readonly>
         <h4>Er de indtastede informationer korrekte?</h4>
-        <input type="submit" value="Accept" onclick="opret()">
+        <input type="submit" value="Accept">
         <button type="button" onclick="tilbage()">Tilbage</button>
     </form>
-
     <script>
-        function opret() {
-            alert("Autocamper er blevet gemt!")
-        }
-
         function tilbage() {
             window.history.back();
         }
