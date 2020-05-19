@@ -8,13 +8,13 @@
 <body>
     <div id="opretForm">
         <form action="/opretAutocamper" method="post">
-            Type: <input type="text" name="a_type" required><br>
-            Mærke: <input type="text" name="a_maerke" required><br>
-            Model: <input type="text" name="a_model" required><br>
-            Kilometer kørt: <input type="number" name="a_odometer" required><br>
-            Sengepladser: <input type="number" name="a_senge" required><br>
-            Nummerplade: <input type="text" name="a_nummerplade" required><br>
-            Pris per dag: <input type="number" name="a_pris" required><br>
+            Type: <input type="text" name="a_type" required oninvalid="this.setCustomValidity('Indtast en type')" oninput=this.setCustomValidity('')><br>
+            Mærke: <input type="text" name="a_maerke" required oninvalid="this.setCustomValidity('Indtast et mærke')" oninput=this.setCustomValidity('')><br>
+            Model: <input type="text" name="a_model" required oninvalid="this.setCustomValidity('Indtast en model')" oninput=this.setCustomValidity('')><br>
+            Kilometer kørt: <input type="number" name="a_odometer" required oninvalid="this.setCustomValidity('Indtast et tal')" oninput=this.setCustomValidity('')><br>
+            Sengepladser: <input type="number" name="a_senge" required oninvalid="this.setCustomValidity('Indtast et tal')" oninput=this.setCustomValidity('')><br>
+            Nummerplade: <input type="text" name="a_nummerplade" required pattern="[A-Z]{2}()[0-9]{5}" oninvalid="this.setCustomValidity('Indtast en gyldig nummerplade')" oninput=this.setCustomValidity('')><br>
+            Pris per dag: <input type="number" name="a_pris" required oninvalid="this.setCustomValidity('Indtast et tal')" oninput=this.setCustomValidity('')><br>
             <input type="submit" value="Gem autocamper">
         </form>
     </div>
