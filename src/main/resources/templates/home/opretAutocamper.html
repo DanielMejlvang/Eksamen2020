@@ -6,15 +6,17 @@
     <link rel="stylesheet" type="text/css" href="MyCSS.css">
 </head>
 <body>
-    <form action="/opretAutocamper" method="post">
-        Type: <input type="text" name="a_type" required><br>
-        Mærke: <input type="text" name="a_maerke" required><br>
-        Model: <input type="text" name="a_model" required><br>
-        Kilometer kørt: <input type="number" name="a_odometer" required><br>
-        Sengepladser: <input type="number" name="a_senge" required><br>
-        Nummerplade: <input type="text" name="a_nummerplade" required><br>
-        Pris per dag: <input type="number" name="a_pris" required><br>
-        <input type="submit" value="Gem autocamper">
-    </form>
+    <div id="opretForm">
+        <form action="/opretAutocamper" method="post">
+            Type: <input type="text" name="a_type" required><br>
+            Mærke: <input type="text" name="a_maerke" required><br>
+            Model: <input type="text" name="a_model" required><br>
+            Kilometer kørt: <input type="number" name="a_odometer" required><br>
+            Sengepladser: <input type="number" name="a_senge" required><br>
+            Nummerplade: <input type="text" name="a_nummerplade" required><br>
+            Pris per dag: <input type="number" name="a_pris" required><br>
+            <input type="submit" value="Gem autocamper">
+        </form>
+    </div>
 </body>
 </html>
