@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tilbehør</title>
+    <link rel="stylesheet" type="text/css" href="MyCSS.css">
+</head>
+<body>
+    <h2>Opret nyt tilbehør</h2>
+    <div id="opretForm">
+        <form action="/opretTilbehor" method="get">
+            Tilbehør navn: <input type="text" name="navn" required><br>
+            Pris: <input type="number" name="pris" required><br>
+            <input type="submit" value="Gem tilbehør">
+        </form>
+    </div>
+    <a href="/">
+        <button type = "button" id="homepage">
+            Forside
+        </button>
+    </a>
+</body>
+</html>

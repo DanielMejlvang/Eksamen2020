@@ -2,8 +2,10 @@ package com.example.demo.Controller;
 
 import com.example.demo.Model.Autocamper;
 import com.example.demo.Model.Kunde;
+import com.example.demo.Model.Tilbehor;
 import com.example.demo.Service.AutocamperService;
 import com.example.demo.Service.KundeService;
+import com.example.demo.Service.TilbehorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,8 @@ public class HomeController {
     KundeService kundeService;
     @Autowired
     AutocamperService autocamperService;
+    @Autowired
+    TilbehorService tilbehorService;
 
     @GetMapping("/")
     public String index(){
@@ -70,5 +74,19 @@ public class HomeController {
     public String acceptAutocamper(@ModelAttribute Autocamper autocamper){
         autocamperService.tilfojAutocamper(autocamper);
         return "redirect:/";
+    }
+
+    @GetMapping("/tilbehor")
+    public String tilbehor() {
+        return "home/tilbehor";
+    }
+
+    @GetMapping("opretTilbehor")
+    public String opretTilbehor(@ModelAttribute Tilbehor tilbehor) {
+        if (tilbehorService.tilfojTilbehor(tilbehor)) {
+            return "redirect:/";
+        } else {
+            return "home/opretFejl";
+        }
     }
 }
