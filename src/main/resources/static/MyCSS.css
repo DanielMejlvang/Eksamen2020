@@ -56,6 +56,18 @@ tr{
     color:black;
     margin-bottom: 1px;
 }
-#venstreTilbehor{
-    
+.split{
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+.venstre{
+    left: 0;
+    border-right: 1px solid black;
+}
+.højre{
+    right: 0;
 }
