@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Opret kontrakt</title>
+    <link rel="stylesheet" type="text/css" href="../../static/MyCSS.css">
+</head>
+<body>
+<h2>Liste over kundeinformationer</h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Fornavn</th>
+        <th>Efternavn</th>
+        <th>Telefon</th>
+        <th>Email</th>
+        <th>Kørekort nr.</th>
+        <th>Gade</th>
+        <th>Postnummer</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="kunde: ${kundeliste}">
+        <td th:text="${kunde.ku_id}" />
+        <td th:text="${kunde.fornavn}" />
+        <td th:text="${kunde.efternavn}" />
+        <td th:text="${kunde.telefon}" />
+        <td th:text="${kunde.email}" />
+        <td th:text="${kunde.korekort}" />
+        <td th:text="${kunde.gade}" />
+        <td th:text="${kunde.postnummer}" />
+        <td>
+            <a th:href="@{'/kontraktDato/'+${kunde.ku_id}}">
+                <button type="button" id = "choice">
+                    Vælg
+                </button>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/">
+    <button type = "button" id="homepage">
+        Forside
+    </button>
+</a>
+</body>
+</html>
