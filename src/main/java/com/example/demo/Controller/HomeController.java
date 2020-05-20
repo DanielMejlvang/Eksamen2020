@@ -64,7 +64,9 @@ public class HomeController {
     }
 
     @GetMapping("/autocampere")
-    public String Autocamper(){
+    public String Autocamper(@ModelAttribute Autocamper autocamper, Model model){
+        List<Autocamper> autocamperliste = autocamperService.listAutocampere();
+        model.addAttribute("autocamperliste", autocamperliste);
         return "home/autocampere";
     }
 

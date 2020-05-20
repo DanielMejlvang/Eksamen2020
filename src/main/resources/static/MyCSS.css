@@ -46,6 +46,18 @@ tr:nth-child(even){
 tr{
     height: 40px;
 }
+#tilfojButton{
+    background-color: green;
+    width: 150px;
+    height: 50px;
+    margin: 10px;
+}
+
+#menuButton{
+    width: 150px;
+    height: 50px;
+    margin: 10px;
+}
 #sletButton {
     background-color: crimson;
     color:white;
