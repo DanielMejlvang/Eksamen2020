@@ -1,9 +1,8 @@
 package com.example.demo.Controller;
 
-import com.example.demo.Model.Autocamper;
-import com.example.demo.Model.Kunde;
-import com.example.demo.Model.Tilbehor;
+import com.example.demo.Model.*;
 import com.example.demo.Service.AutocamperService;
+import com.example.demo.Service.KontraktService;
 import com.example.demo.Service.KundeService;
 import com.example.demo.Service.TilbehorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -23,6 +23,8 @@ public class HomeController {
     AutocamperService autocamperService;
     @Autowired
     TilbehorService tilbehorService;
+    @Autowired
+    KontraktService kontraktService;
 
     @GetMapping("/")
     public String index(){
@@ -105,4 +107,32 @@ public class HomeController {
             return "home/opretFejl";
         }
     }
+
+    @GetMapping("/kontrakter")
+    public String kontrakter() {
+        return "kontrakter/kontrakter";
+    }
+
+    @GetMapping("/opretKontrakt")
+    public String opretKontakt(@ModelAttribute Kunde kunde, Model model) {
+        List<Kunde> kundeliste = kundeService.listKunder();
+        model.addAttribute("kundeliste", kundeliste);
+        return "kontrakter/opretKontrakt";
+    }
+
+    public static String[] temp = new String[4];
+    @GetMapping("/kontraktDato/{ku_id}")
+    public String kontraktDato(@PathVariable("ku_id") int id, Model model) {
+        //model.addAttribute("nyKontrakt", id);
+        temp[0] = Integer.toString(id);
+        return "kontrakter/kontraktDato";
+    }
+
+    @GetMapping("/kontraktDato")
+    public String kontraktAuto(@ModelAttribute Dato dato) {
+        temp[1] = dato.getStart_dato();
+        temp[2] = dato.getSlut_dato();
+        return "kontrakter/kontraktAuto";
+    }
+
 }
