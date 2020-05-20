@@ -128,7 +128,7 @@ public class HomeController {
         return "kontrakter/kontraktDato";
     }
 
-    @GetMapping("/kontraktDato")
+    @GetMapping("/kontraktAuto")
     public String kontraktAuto(@ModelAttribute Dato dato, @ModelAttribute Autocamper autocamper, Model model) {
         temp[1] = dato.getStart_dato();
         temp[2] = dato.getSlut_dato();

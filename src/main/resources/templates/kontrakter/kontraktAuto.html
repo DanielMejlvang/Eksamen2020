@@ -1,11 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Vælg autocamper</title>
+    <link rel="stylesheet" type="text/css" href="MyCSS.css" th:href="@{/MyCSS.css}">
 </head>
 <body>
     <h2>Vælg autocamper til kontrakten</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Mærke</th>
+            <th>Model</th>
+            <th>Kilometer kørt</th>
+            <th>Sengepladser</th>
+            <th>Nummerplade</th>
+            <th>Pris per dag</th>
+            <th></th>
+        </tr>
+        </thead>
 
+        <tbody>
+        <tr th:each="autocamper: ${autocamperliste}">
+            <td th:text="${autocamper.a_id}" />
+            <td th:text="${autocamper.a_type}" />
+            <td th:text="${autocamper.a_maerke}" />
+            <td th:text="${autocamper.a_model}" />
+            <td th:text="${autocamper.a_odometer}" />
+            <td th:text="${autocamper.a_senge}" />
+            <td th:text="${autocamper.a_nummerplade}" />
+            <td th:text="${autocamper.a_pris}" />
+            <td>
+                <a href="@{'/kontraktData/'+${autocamper.a_id}}">
+                    <button type="button" id="choice">
+                        Vælg
+                    </button>
+                </a>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/">
+        <button type = "button" id="homepage">
+            Forside
+        </button>
+    </a>
 </body>
 </html>
