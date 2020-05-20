@@ -89,7 +89,9 @@ public class HomeController {
     }
 
     @GetMapping("/tilbehor")
-    public String tilbehor() {
+    public String tilbehor(@ModelAttribute Tilbehor tilbehor, Model model) {
+        List<Tilbehor> tilbehorliste = tilbehorService.listTilbehor();
+        model.addAttribute("tilbehorliste", tilbehorliste);
         return "home/tilbehor";
     }
 
