@@ -66,7 +66,9 @@ public class HomeController {
     }
 
     @GetMapping("/autocampere")
-    public String Autocamper(){
+    public String Autocamper(@ModelAttribute Autocamper autocamper, Model model){
+        List<Autocamper> autocamperliste = autocamperService.listAutocampere();
+        model.addAttribute("autocamperliste", autocamperliste);
         return "home/autocampere";
     }
 
@@ -91,14 +93,16 @@ public class HomeController {
     }
 
     @GetMapping("/tilbehor")
-    public String tilbehor() {
+    public String tilbehor(@ModelAttribute Tilbehor tilbehor, Model model) {
+        List<Tilbehor> tilbehorliste = tilbehorService.listTilbehor();
+        model.addAttribute("tilbehorliste", tilbehorliste);
         return "home/tilbehor";
     }
 
     @GetMapping("opretTilbehor")
     public String opretTilbehor(@ModelAttribute Tilbehor tilbehor) {
         if (tilbehorService.tilfojTilbehor(tilbehor)) {
-            return "redirect:/";
+            return "redirect:/tilbehor";
         } else {
             return "home/opretFejl";
         }

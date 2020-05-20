@@ -15,7 +15,7 @@ public class TilbehorRepository {
     JdbcTemplate template;
 
     public List<Tilbehor> listTilbehor() {
-        String sql = "SELECT * FROM tilbehor";
+        String sql = "SELECT * FROM tilbehor ORDER BY navn";
         RowMapper<Tilbehor> rm = new BeanPropertyRowMapper<>(Tilbehor.class);
         return template.query(sql, rm);
     }

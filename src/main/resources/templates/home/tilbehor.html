@@ -1,14 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Tilbehør</title>
     <link rel="stylesheet" type="text/css" href="MyCSS.css">
 </head>
 <body>
-    <div class="split venstre"></div>
-    <h2> Tilbehør liste</h2>
-    indsæt table med tilbehør
+    <div class="split venstre">
+        <h2> Tilbehør liste</h2>
+        <div id="venstreTilbehor">
+        <h2>Liste over tilbehør</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Tilbehør</th>
+                <th>Pris per dag</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="tilbehor: ${tilbehorliste}">
+                <td th:text="${tilbehor.navn}"></td>
+                <td th:text="${tilbehor.pris}"></td>
+                <td>
+                    <a th:href="@{'/sletTilbehor/'+${tilbehor.navn}}">
+                        <button type="button" id="sletButton" onclick="return confirm('Er du sikker?')">
+                            slet
+                        </button>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
 
 
     <div class="split højre">
