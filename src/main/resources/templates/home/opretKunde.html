@@ -9,15 +9,15 @@
     <h2>Opret ny kunde</h2>
     <form action="/opretKunde" method="post">
         <div id="opretForm">
-            Fornavn: <input type="text" name="fornavn" required><br>
-            Efternavn: <input type="text" name="efternavn" required><br>
-            Telefon: <input type="text" name="telefon" required><br>
-            Email: <input type="text" name="email" required><br>
-            Kørekort nr.: <input type="text" name="korekort" required><br>
-            Gade: <input type="text" name="gade" required><br>
-            Postnummer: <input type="text" name="postnummer" required><br>
-            By: <input type="text" name="bynavn" required><br>
-            Land: <input type="text" name="land" required><br>
+            Fornavn: <input type="text" name="fornavn" required oninvalid="this.setCustomValidity('Indtast venligst et fornavn')" oninput="this.setCustomValidity('')"><br>
+            Efternavn: <input type="text" name="efternavn" required oninvalid="this.setCustomValidity('Indtast venligst et efternavn')" oninput="this.setCustomValidity('')"><br>
+            Telefon: <input type="text" name="telefon" required pattern="^[0-9-+\s()]*$" oninvalid="this.setCustomValidity('Indtast venligst et gyldigt telefonnummer')" oninput="this.setCustomValidity('')"><br>
+            Email: <input type="email" name="email" required oninvalid="this.setCustomValidity('Indtast venligst en gyldig emailadresse')" oninput="this.setCustomValidity('')"><br>
+            Kørekort nr.: <input type="text" name="korekort" required oninvalid="this.setCustomValidity('Indtast venligst et kørekortsnummer')" oninput="this.setCustomValidity('')"><br>
+            Gade: <input type="text" name="gade" required oninvalid="this.setCustomValidity('Indtast venligst en adresse')" oninput="this.setCustomValidity('')"><br>
+            Postnummer: <input type="text" name="postnummer" required oninvalid="this.setCustomValidity('Indtast venligst et postnummer')" oninput="this.setCustomValidity('')"><br>
+            By: <input type="text" name="bynavn" required oninvalid="this.setCustomValidity('Indtast venligst et bynavn')" oninput="this.setCustomValidity('')"><br>
+            Land: <input type="text" name="land" required oninvalid="this.setCustomValidity('Indtast venligst et navn')" oninput="this.setCustomValidity('')"><br>
             <input type="submit" value="Gem kunde">
         </div>
     </form>
