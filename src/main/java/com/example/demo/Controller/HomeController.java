@@ -40,18 +40,18 @@ public class HomeController {
     public String kundeliste(@ModelAttribute Kunde kunde, Model model) {
         List<Kunde> kundeliste = kundeService.listKunder();
         model.addAttribute("kundeliste", kundeliste);
-        return "home/kundeliste";
+        return "kunder/kundeliste";
     }
 
     @GetMapping("/opretKunde")
     public String opretKunde() {
-        return "home/opretKunde";
+        return "kunder/opretKunde";
     }
 
     @PostMapping("/opretKunde")
     public String opretKunde(Model model, @ModelAttribute Kunde kunde) {
         model.addAttribute("nyKunde", kunde);
-        return "home/acceptKunde";
+        return "kunder/acceptKunde";
     }
 
     @PostMapping("/acceptKunde")
@@ -70,19 +70,22 @@ public class HomeController {
 
     @GetMapping("/opretAutocamper")
     public String opretAutocamper(){
-        return "home/opretAutocamper";
+        return "autocampere/opretAutocamper";
     }
 
     @PostMapping("/opretAutocamper")
     public String opretAutocamper(Model model, @ModelAttribute Autocamper autocamper){
         model.addAttribute("nyAutocamper", autocamper);
-        return "home/acceptAutocamper";
+        return "autocampere/acceptAutocamper";
     }
 
     @PostMapping("/acceptAutocamper")
     public String acceptAutocamper(@ModelAttribute Autocamper autocamper){
-        autocamperService.tilfojAutocamper(autocamper);
-        return "redirect:/";
+        if(autocamperService.tilfojAutocamper(autocamper)) {
+            return "redirect:/";
+        } else {
+
+        }
     }
 
     @GetMapping("/tilbehor")
