@@ -84,7 +84,7 @@ public class HomeController {
         if(autocamperService.tilfojAutocamper(autocamper)) {
             return "redirect:/";
         } else {
-
+            return "home/opretFejl";
         }
     }
 

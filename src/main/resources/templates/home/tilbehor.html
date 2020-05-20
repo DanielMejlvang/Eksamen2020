@@ -6,13 +6,19 @@
     <link rel="stylesheet" type="text/css" href="MyCSS.css">
 </head>
 <body>
+    <div id="venstreTilbehor"></div>
+    <h2>Tilbehør liste</h2>
+    indsæt table med tilbehør
+
     <h2>Opret nyt tilbehør</h2>
-    <div id="opretForm">
-        <form action="/opretTilbehor" method="get">
-            Tilbehør navn: <input type="text" name="navn" required><br>
-            Pris: <input type="number" name="pris" required><br>
-            <input type="submit" value="Gem tilbehør">
-        </form>
+    <div id="højreTilbehor">
+        <div id="opretForm">
+            <form action="/opretTilbehor" method="get">
+                Tilbehør navn: <input type="text" name="navn" required><br>
+                Pris: <input type="number" name="pris" required><br>
+                <input type="submit" value="Gem tilbehør">
+            </form>
+        </div>
     </div>
     <a href="/">
         <button type = "button" id="homepage">
