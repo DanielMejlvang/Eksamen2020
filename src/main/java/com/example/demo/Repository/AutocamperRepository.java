@@ -41,4 +41,20 @@ public class AutocamperRepository {
         //Returnerer sandt hvis sletningen gik igennem
         return template.update(sql, id) > 0;
     }
+
+    //find ledige autocampere
+    public List<Autocamper> listFrieAutocampere(String startDato, String slutDato) {
+        String sql = "SELECT *\n" +
+                "FROM autocampere\n" +
+                "WHERE a_id NOT IN\n" +
+                "\t(SELECT a_id\n" +
+                "    FROM kontrakter LEFT JOIN autocampere USING (a_id)\n" +
+                "    WHERE \n" +
+                "\t\t('"+startDato+"' < start_dato AND '"+slutDato+"' > start_dato) OR\n" +
+                "\t\t('"+startDato+"' < slut_dato AND '"+slutDato+"' > slut_dato) OR \n" +
+                "        ('"+startDato+"' > start_dato AND '"+slutDato+"' < slut_dato)\n" +
+                "\t)";
+        RowMapper<Autocamper> rm = new BeanPropertyRowMapper<>(Autocamper.class);
+        return template.query(sql, rm);
+    }
 }

@@ -129,10 +129,11 @@ public class HomeController {
     }
 
     @GetMapping("/kontraktDato")
-    public String kontraktAuto(@ModelAttribute Dato dato) {
+    public String kontraktAuto(@ModelAttribute Dato dato, @ModelAttribute Autocamper autocamper, Model model) {
         temp[1] = dato.getStart_dato();
         temp[2] = dato.getSlut_dato();
+        List<Autocamper> autocamperliste = autocamperService.listFrieAutocampere(temp[1], temp[2]);
+        model.addAttribute("autocamperliste", autocamperliste);
         return "kontrakter/kontraktAuto";
     }
-
 }

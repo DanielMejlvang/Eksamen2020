@@ -27,4 +27,8 @@ public class AutocamperService {
     public Boolean sletAutocamper(int id){
         return ar.sletAutocamper(id);
     }
+
+    public List<Autocamper> listFrieAutocampere(String start, String slut) {
+        return ar.listFrieAutocampere(start, slut);
+    }
 }
