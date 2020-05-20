@@ -65,9 +65,9 @@ tr{
     padding-top: 20px;
 }
 .venstre{
-    left: 0;
+    left: 20px;
     border-right: 1px solid black;
 }
 .højre{
-    right: 0;
+    right: -40px;
 }

@@ -20,7 +20,7 @@
             <tbody>
             <tr th:each="tilbehor: ${tilbehorliste}">
                 <td th:text="${tilbehor.navn}"></td>
-                <td th:text="${tilbehor.navn}"></td>
+                <td th:text="${tilbehor.pris}"></td>
                 <td>
                     <a th:href="@{'/sletTilbehor/'+${tilbehor.navn}}">
                         <button type="button" id="sletButton" onclick="return confirm('Er du sikker?')">

@@ -98,7 +98,7 @@ public class HomeController {
     @GetMapping("opretTilbehor")
     public String opretTilbehor(@ModelAttribute Tilbehor tilbehor) {
         if (tilbehorService.tilfojTilbehor(tilbehor)) {
-            return "redirect:/";
+            return "redirect:/tilbehor";
         } else {
             return "home/opretFejl";
         }
