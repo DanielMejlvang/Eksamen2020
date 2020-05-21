@@ -122,8 +122,7 @@ public class HomeController {
 
     public static String[] temp = new String[4];
     @GetMapping("/kontraktDato/{ku_id}")
-    public String kontraktDato(@PathVariable("ku_id") int id, Model model) {
-        //model.addAttribute("nyKontrakt", id);
+    public String kontraktDato(@PathVariable("ku_id") int id) {
         temp[0] = Integer.toString(id);
         return "kontrakter/kontraktDato";
     }
@@ -135,5 +134,13 @@ public class HomeController {
         List<Autocamper> autocamperliste = autocamperService.listFrieAutocampere(temp[1], temp[2]);
         model.addAttribute("autocamperliste", autocamperliste);
         return "kontrakter/kontraktAuto";
+    }
+
+    @GetMapping("/kontraktData/{a_id}")
+    public String kontraktData(@PathVariable("a_id") int a_id, @ModelAttribute Tilbehor tilbehor, Model model) {
+        temp[3] = Integer.toString(a_id);
+        List<Tilbehor> tilbehorliste = tilbehorService.listTilbehor();
+        model.addAttribute("tilbehorListe", tilbehorliste);
+        return "kontrakter/kontraktData";
     }
 }

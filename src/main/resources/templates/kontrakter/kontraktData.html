@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Kontrakt Data</title>
+</head>
+<body>
+    Indtast yderligere oplysninger
+    <div id="opretForm">
+        <form action="/acceptKontrakt" method="get">
+            Afleverings lokation: <input type="text" name="aflevering">
+            Afhentnings lokation: <input type="text" name="afhentning">
+            <table>
+                <tbody>
+                    <tr th:each="tilbehor: ${tilbehorListe}">
+                        <td th:text="${tilbehor.navn}"></td>
+                        <td th:text="${tilbehor.pris}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
