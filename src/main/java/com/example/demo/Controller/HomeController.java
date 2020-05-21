@@ -140,6 +140,7 @@ public class HomeController {
     @GetMapping("/kontraktData")
     public String kontraktData(@ModelAttribute Kontrakt kontrakt, @ModelAttribute Tilbehor tilbehor, Model model, Model modelListe) {
         //kontrakt.setA_id(a_id);
+        kontrakt.setKo_pris(autocamperService.findAutocamperMedId(kontrakt.getA_id()).getA_pris()*kontrakt.daysBetween());
         model.addAttribute("nyKontrakt", kontrakt);
         List<Tilbehor> tilbehorliste = tilbehorService.listTilbehor();
         modelListe.addAttribute("tilbehorListe", tilbehorliste);

@@ -1,14 +1,22 @@
 package com.example.demo.Model;
 
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 @Entity
 public class Kontrakt {
     @Id
     private int ko_id;
-    private String ku_id;
-    private String a_id;
+    private int ku_id;
+    private int a_id;
     private String start_dato;
     private String slut_dato;
     private String aflevering;
@@ -20,7 +28,7 @@ public class Kontrakt {
     public Kontrakt() {
     }
 
-    public Kontrakt(String ku_id) {
+  /*  public Kontrakt(String ku_id) {
         this.ku_id = ku_id;
     }
 
@@ -28,9 +36,9 @@ public class Kontrakt {
         this.ku_id = ku_id;
         this.start_dato = start_dato;
         this.slut_dato = slut_dato;
-    }
+    }*/
 
-    public Kontrakt(int ko_id, String ku_id, String a_id, String start_dato, String slut_dato, String aflevering, String afhentning, String ko_tilbehor, String ko_kommentar, double ko_pris) {
+    public Kontrakt(int ko_id, int ku_id, int a_id, String start_dato, String slut_dato, String aflevering, String afhentning, String ko_tilbehor, String ko_kommentar, double ko_pris) {
         this.ko_id = ko_id;
         this.ku_id = ku_id;
         this.a_id = a_id;
@@ -43,6 +51,20 @@ public class Kontrakt {
         this.ko_pris = ko_pris;
     }
 
+    public double daysBetween(){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try{
+            Date startDato = sdf.parse(start_dato);
+            Date slutDato = sdf.parse(slut_dato);
+            long diffInMillies = Math.abs(slutDato.getTime() - startDato.getTime());
+            long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+            return (double) diff;
+        } catch (ParseException e){
+            System.out.println("Couldn't parse");
+        }
+        return 2;
+    }
+
     public int getKo_id() {
         return ko_id;
     }
@@ -51,19 +73,19 @@ public class Kontrakt {
         this.ko_id = ko_id;
     }
 
-    public String getKu_id() {
+    public int getKu_id() {
         return ku_id;
     }
 
-    public void setKu_id(String ku_id) {
+    public void setKu_id(int ku_id) {
         this.ku_id = ku_id;
     }
 
-    public String getA_id() {
+    public int getA_id() {
         return a_id;
     }
 
-    public void setA_id(String a_id) {
+    public void setA_id(int a_id) {
         this.a_id = a_id;
     }
 

@@ -16,7 +16,7 @@
             Afhentnings lokation: <input type="text" name="afhentning"><br>
             Tilbehor: <input type="text" name="ko_tilbehor"><br>
             Kommentar: <input type="text" name="ko_kommentar">
-            Pris: <input type="number" name="ko_pris" required step=".01">
+            Pris: <input type="text" readonly name="ko_pris" th:value="${nyKontrakt.ko_pris}">
             <input type="submit" value="Gem">
         </form>
     </div>
