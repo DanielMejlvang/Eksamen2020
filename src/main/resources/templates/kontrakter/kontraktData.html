@@ -8,10 +8,10 @@
     Indtast yderligere oplysninger
     <div id="opretForm">
         <form action="/acceptKontrakt" method="get">
-            <input type="hidden" name="ku_id" th:value="@{nyKontrakt.ku_id}">
-            <input type="hidden" name="a_id" th:value="@{nyKontrakt.a_id}">
-            <input type="hidden" name="start_dato" th:value="@{nyKontrakt.start_dato}">
-            <input type="hidden" name="slut_dato" th:value="@{nyKontrakt.slut_dato}">
+            <input type="hidden" name="ku_id" th:value="${nyKontrakt.ku_id}">
+            <input type="hidden" name="a_id" th:value="${nyKontrakt.a_id}">
+            <input type="hidden" name="start_dato" th:value="${nyKontrakt.start_dato}">
+            <input type="hidden" name="slut_dato" th:value="${nyKontrakt.slut_dato}">
             Afleverings lokation: <input type="text" name="aflevering"><br>
             Afhentnings lokation: <input type="text" name="afhentning"><br>
             Tilbehor: <input type="text" name="ko_tilbehor"><br>

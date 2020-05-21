@@ -7,8 +7,8 @@ import javax.persistence.Id;
 public class Kontrakt {
     @Id
     private int ko_id;
-    private int ku_id;
-    private int a_id;
+    private String ku_id;
+    private String a_id;
     private String start_dato;
     private String slut_dato;
     private String aflevering;
@@ -20,17 +20,17 @@ public class Kontrakt {
     public Kontrakt() {
     }
 
-    public Kontrakt(int ku_id) {
+    public Kontrakt(String ku_id) {
         this.ku_id = ku_id;
     }
 
-    public Kontrakt(int ku_id, String start_dato, String slut_dato) {
+    public Kontrakt(String ku_id, String start_dato, String slut_dato) {
         this.ku_id = ku_id;
         this.start_dato = start_dato;
         this.slut_dato = slut_dato;
     }
 
-    public Kontrakt(int ko_id, int ku_id, int a_id, String start_dato, String slut_dato, String aflevering, String afhentning, String ko_tilbehor, String ko_kommentar, double ko_pris) {
+    public Kontrakt(int ko_id, String ku_id, String a_id, String start_dato, String slut_dato, String aflevering, String afhentning, String ko_tilbehor, String ko_kommentar, double ko_pris) {
         this.ko_id = ko_id;
         this.ku_id = ku_id;
         this.a_id = a_id;
@@ -51,19 +51,19 @@ public class Kontrakt {
         this.ko_id = ko_id;
     }
 
-    public int getKu_id() {
+    public String getKu_id() {
         return ku_id;
     }
 
-    public void setKu_id(int ku_id) {
+    public void setKu_id(String ku_id) {
         this.ku_id = ku_id;
     }
 
-    public int getA_id() {
+    public String getA_id() {
         return a_id;
     }
 
-    public void setA_id(int a_id) {
+    public void setA_id(String a_id) {
         this.a_id = a_id;
     }
 

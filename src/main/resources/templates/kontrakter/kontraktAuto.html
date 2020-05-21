@@ -7,6 +7,13 @@
 </head>
 <body>
     <h2>Vælg autocamper til kontrakten</h2>
+    <form action="/kontraktData">
+        <input type="text" name="ku_id" th:value="${nyKontrakt.ku_id}" readonly>
+        <input type="text" name="start_dato" th:value="${nyKontrakt.start_dato}" readonly>
+        <input type="text" name="slut_dato" th:value="${nyKontrakt.slut_dato}" readonly> <br>
+        <input type="number" name="a_id" placeholder="Input ID her">
+        <input type="submit" value="Videre">
+    </form>
     <table>
         <thead>
         <tr>

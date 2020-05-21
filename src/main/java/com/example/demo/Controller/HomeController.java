@@ -121,8 +121,8 @@ public class HomeController {
         return "kontrakter/opretKontrakt";
     }
 
-    @GetMapping("/kontraktDato/{ku_id}")
-    public String kontraktDato(@PathVariable("ku_id") int id, @ModelAttribute Kontrakt kontrakt, Model model) {
+    @GetMapping("/kontraktDato")
+    public String kontraktDato(@ModelAttribute Kontrakt kontrakt, Model model) {
         //Kontrakt nyKontrakt = new Kontrakt();
         //nyKontrakt.setKu_id(id);
         model.addAttribute("nyKontrakt", kontrakt);
@@ -137,9 +137,9 @@ public class HomeController {
         return "kontrakter/kontraktAuto";
     }
 
-    @GetMapping("/kontraktData/{a_id}")
-    public String kontraktData(@PathVariable("a_id") int a_id, @ModelAttribute Kontrakt kontrakt, @ModelAttribute Tilbehor tilbehor, Model model, Model modelListe) {
-        kontrakt.setA_id(a_id);
+    @GetMapping("/kontraktData")
+    public String kontraktData(@ModelAttribute Kontrakt kontrakt, @ModelAttribute Tilbehor tilbehor, Model model, Model modelListe) {
+        //kontrakt.setA_id(a_id);
         model.addAttribute("nyKontrakt", kontrakt);
         List<Tilbehor> tilbehorliste = tilbehorService.listTilbehor();
         modelListe.addAttribute("tilbehorListe", tilbehorliste);
@@ -156,5 +156,14 @@ public class HomeController {
         status.isComplete();
         //System.out.println(temp);
         return "kontrakter/acceptKontrakt";
+    }
+
+    @PostMapping("/acceptKontrakt")
+    public String acceptKontrakt(@ModelAttribute Kontrakt kontrakt) {
+        if (kontraktService.tilfojKontrakt(kontrakt)) {
+            return "redirect:/kontrakter";
+        } else {
+            return "home/opretFejl";
+        }
     }
 }

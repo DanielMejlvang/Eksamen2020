@@ -7,9 +7,9 @@
 <body>
     <div id="opretForm">
         <form action="/kontraktAuto" method="get">
-            <input type="hidden" name="ku_id" th:value="@{nyKontrakt.ku_id}">
-            Start dato: <input type="text" name="start_dato" required>
-            Slut dato: <input type="text" name="slut_dato" required>
+            Kunde ID: <input type="text" name="ku_id" th:value="${nyKontrakt.ku_id}" readonly><br>
+            Start dato: <input type="text" name="start_dato" required><br>
+            Slut dato: <input type="text" name="slut_dato" required><br>
             <input type="submit" value="Videre">
         </form>
     </div>
