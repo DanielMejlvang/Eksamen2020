@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Vælg dato</title>
@@ -7,10 +7,12 @@
 <body>
     <div id="opretForm">
         <form action="/kontraktAuto" method="get">
+            <input type="hidden" name="ku_id" th:value="@{nyKontrakt.ku_id}">
             Start dato: <input type="text" name="start_dato" required>
             Slut dato: <input type="text" name="slut_dato" required>
             <input type="submit" value="Videre">
         </form>
     </div>
+
 </body>
 </html>

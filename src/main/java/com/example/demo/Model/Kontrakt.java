@@ -13,17 +13,24 @@ public class Kontrakt {
     private String slut_dato;
     private String aflevering;
     private String afhentning;
+    private String ko_tilbehor;
     private String ko_kommentar;
     private double ko_pris;
 
     public Kontrakt() {
     }
 
-    public Kontrakt(int kundeId) {
-        ku_id = kundeId;
+    public Kontrakt(int ku_id) {
+        this.ku_id = ku_id;
     }
 
-    public Kontrakt(int ko_id, int ku_id, int a_id, String start_dato, String slut_dato, String aflevering, String afhentning, String ko_kommentar, double ko_pris) {
+    public Kontrakt(int ku_id, String start_dato, String slut_dato) {
+        this.ku_id = ku_id;
+        this.start_dato = start_dato;
+        this.slut_dato = slut_dato;
+    }
+
+    public Kontrakt(int ko_id, int ku_id, int a_id, String start_dato, String slut_dato, String aflevering, String afhentning, String ko_tilbehor, String ko_kommentar, double ko_pris) {
         this.ko_id = ko_id;
         this.ku_id = ku_id;
         this.a_id = a_id;
@@ -31,6 +38,7 @@ public class Kontrakt {
         this.slut_dato = slut_dato;
         this.aflevering = aflevering;
         this.afhentning = afhentning;
+        this.ko_tilbehor = ko_tilbehor;
         this.ko_kommentar = ko_kommentar;
         this.ko_pris = ko_pris;
     }
@@ -89,6 +97,14 @@ public class Kontrakt {
 
     public void setAfhentning(String afhentning) {
         this.afhentning = afhentning;
+    }
+
+    public String getKo_tilbehor() {
+        return ko_tilbehor;
+    }
+
+    public void setKo_tilbehor(String ko_tilbehor) {
+        this.ko_tilbehor = ko_tilbehor;
     }
 
     public String getKo_kommentar() {

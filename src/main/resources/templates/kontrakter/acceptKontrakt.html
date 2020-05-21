@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Ny kontrakt</title>
+</head>
+<body>
+    <h2>Dette er de indtastede informationer</h2>
+    <form action="/acceptKontrakt" method="post">
+        <input type="text" name="ku_id" th:value="${nyKontrakt.ku_id}" readonly>
+        <input type="text" name="a_id" th:value="${nyKontrakt.a_id}" readonly>
+        <input type="text" name="start_dato" th:value="${nyKontrakt.start_dato}" readonly>
+        <input type="number" name="slut_dato" th:value="${nyKontrakt.slut_dato}" readonly>
+        <input type="number" name="aflevering" th:value="${nyKontrakt.aflevering}" readonly>
+        <input type="text" name="afhentning" th:value="${nyKontrakt.afhentning}" readonly>
+        <input type="number" name="ko_tilbehor" th:value="${nyKontrakt.ko_tilbehor}" readonly>
+        <input type="number" name="ko_kommentar" th:value="${nyKontrakt.ko_kommentar}" readonly>
+        <input type="number" name="ko_pris" th:value="${nyKontrakt.ko_pris}" readonly>
+        <h4>Er de indtastede informationer korrekte?</h4>
+        <input type="submit" value="Accept">
+        <button type="button" onclick="tilbage()">Tilbage</button>
+    </form>
+    <a href="/">
+        <button type = "button" id="homepage">
+            Forside
+        </button>
+    </a>
+    <script>
+        function tilbage() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

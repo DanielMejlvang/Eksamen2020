@@ -8,14 +8,15 @@ import com.example.demo.Service.TilbehorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
+@SessionAttributes("nyKontrakt")
 public class HomeController {
     @Autowired
     KundeService kundeService;
@@ -120,27 +121,40 @@ public class HomeController {
         return "kontrakter/opretKontrakt";
     }
 
-    public static String[] temp = new String[4];
     @GetMapping("/kontraktDato/{ku_id}")
-    public String kontraktDato(@PathVariable("ku_id") int id) {
-        temp[0] = Integer.toString(id);
+    public String kontraktDato(@PathVariable("ku_id") int id, @ModelAttribute Kontrakt kontrakt, Model model) {
+        //Kontrakt nyKontrakt = new Kontrakt();
+        //nyKontrakt.setKu_id(id);
+        model.addAttribute("nyKontrakt", kontrakt);
         return "kontrakter/kontraktDato";
     }
 
     @GetMapping("/kontraktAuto")
-    public String kontraktAuto(@ModelAttribute Dato dato, @ModelAttribute Autocamper autocamper, Model model) {
-        temp[1] = dato.getStart_dato();
-        temp[2] = dato.getSlut_dato();
-        List<Autocamper> autocamperliste = autocamperService.listFrieAutocampere(temp[1], temp[2]);
-        model.addAttribute("autocamperliste", autocamperliste);
+    public String kontraktAuto(@ModelAttribute Kontrakt kontrakt, @ModelAttribute Autocamper autocamper, Model model, Model modelList) {
+        model.addAttribute("nyKontrakt", kontrakt);
+        List<Autocamper> autocamperliste = autocamperService.listFrieAutocampere(kontrakt.getStart_dato(), kontrakt.getSlut_dato());
+        modelList.addAttribute("autocamperliste", autocamperliste);
         return "kontrakter/kontraktAuto";
     }
 
     @GetMapping("/kontraktData/{a_id}")
-    public String kontraktData(@PathVariable("a_id") int a_id, @ModelAttribute Tilbehor tilbehor, Model model) {
-        temp[3] = Integer.toString(a_id);
+    public String kontraktData(@PathVariable("a_id") int a_id, @ModelAttribute Kontrakt kontrakt, @ModelAttribute Tilbehor tilbehor, Model model, Model modelListe) {
+        kontrakt.setA_id(a_id);
+        model.addAttribute("nyKontrakt", kontrakt);
         List<Tilbehor> tilbehorliste = tilbehorService.listTilbehor();
-        model.addAttribute("tilbehorListe", tilbehorliste);
+        modelListe.addAttribute("tilbehorListe", tilbehorliste);
         return "kontrakter/kontraktData";
+    }
+
+    @GetMapping("/acceptKontrakt")
+    public String acceptKontrakt(@ModelAttribute Kontrakt kontrakt, Model model, SessionStatus status) {
+
+        //String[] checked = request.getParameterValues("ko_tilbehor[]");
+        //Kontrakt test = new Kontrakt(100, tempData.getKu_id(), tempData.getA_id(), tempData.getStart_dato(), tempData.getSlut_dato(), data.getAflevering(), data.getAfhentning(), Arrays.toString(checked), "", 0.0);
+
+        model.addAttribute("nyKontrakt", kontrakt);
+        status.isComplete();
+        //System.out.println(temp);
+        return "kontrakter/acceptKontrakt";
     }
 }

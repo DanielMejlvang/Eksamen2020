@@ -33,12 +33,11 @@
             <td th:text="${autocamper.a_nummerplade}" />
             <td th:text="${autocamper.a_pris}" />
             <td>
-                <a href="@{'/kontraktData/'+${autocamper.a_id}}">
+                <a th:href="@{'/kontraktData/'+${autocamper.a_id}}">
                     <button type="button" id="choice">
                         Vælg
                     </button>
                 </a>
-
             </td>
         </tr>
         </tbody>

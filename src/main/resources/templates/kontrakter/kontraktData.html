@@ -8,17 +8,31 @@
     Indtast yderligere oplysninger
     <div id="opretForm">
         <form action="/acceptKontrakt" method="get">
-            Afleverings lokation: <input type="text" name="aflevering">
-            Afhentnings lokation: <input type="text" name="afhentning">
-            <table>
-                <tbody>
-                    <tr th:each="tilbehor: ${tilbehorListe}">
-                        <td th:text="${tilbehor.navn}"></td>
-                        <td th:text="${tilbehor.pris}"></td>
-                    </tr>
-                </tbody>
-            </table>
+            <input type="hidden" name="ku_id" th:value="@{nyKontrakt.ku_id}">
+            <input type="hidden" name="a_id" th:value="@{nyKontrakt.a_id}">
+            <input type="hidden" name="start_dato" th:value="@{nyKontrakt.start_dato}">
+            <input type="hidden" name="slut_dato" th:value="@{nyKontrakt.slut_dato}">
+            Afleverings lokation: <input type="text" name="aflevering"><br>
+            Afhentnings lokation: <input type="text" name="afhentning"><br>
+            Tilbehor: <input type="text" name="ko_tilbehor"><br>
+            Kommentar: <input type="text" name="ko_kommentar">
+            Pris: <input type="number" name="ko_pris">
+            <input type="submit" value="Gem">
         </form>
     </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Tilbehør</th>
+            <th>Pris per dag</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tilbehor: ${tilbehorliste}">
+            <td th:text="${tilbehor.navn}"></td>
+            <td th:text="${tilbehor.pris}"></td>
+        </tr>
+        </tbody>
+    </table>
 </body>
 </html>
