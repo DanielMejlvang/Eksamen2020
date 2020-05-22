@@ -16,24 +16,28 @@
             Afhentnings lokation: <input type="text" name="afhentning"><br>
             Tilbehor: <input type="text" name="ko_tilbehor"><br>
             Kommentar: <input type="text" name="ko_kommentar">
-            Pris: <input type="text" readonly name="ko_pris" th:value="${nyKontrakt.ko_pris}">
+            <table id="tilbehor">
+                <thead>
+                    <tr>
+                        <th>Tilbehør</th>
+                        <th>Pris per dag</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="tilbehor: ${tilbehorliste}">
+                        <td th:text="${tilbehor.navn}"></td>
+                        <td th:text="${tilbehor.pris}"></td>
+                        <td><input class="double" type="checkbox" th:field="${tilbehor.pris}" th:value="${tilbehor.pris}" id="tilbehorCheck">
+                            <label class="form-check-input" for="tilbehorCheck">
+                                Vælg denne
+                            </label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <input type="submit" value="Gem">
         </form>
     </div>
-    <table>
-        <thead>
-        <tr>
-            <th>Tilbehør</th>
-            <th>Pris per dag</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="tilbehor: ${tilbehorListe}">
-            <td th:text="${tilbehor.navn}"></td>
-            <td th:text="${tilbehor.pris}"></td>
-        </tr>
-        </tbody>
-    </table>
 
 </body>
 </html>
