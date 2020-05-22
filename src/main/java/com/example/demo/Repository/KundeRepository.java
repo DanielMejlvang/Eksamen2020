@@ -48,4 +48,9 @@ public class KundeRepository {
         //return boolean om sletning gik til
         return template.update(sql, id) > 0;
     }
+
+    public int nyesteId() {
+        String sql = "SELECT ku_id FROM kunder ORDER BY ku_id DESC LIMIT 1";
+        return template.queryForObject(sql, Integer.class);
+    }
 }

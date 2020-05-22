@@ -31,6 +31,10 @@ public class KundeService {
 
     //metode til at slette en kunde fra databasen
     public Boolean sletKunde(int id) {
-        return sletKunde(id);
+        return kr.sletKunde(id);
+    }
+
+    public int nyesteId() {
+        return kr.nyesteId();
     }
 }
