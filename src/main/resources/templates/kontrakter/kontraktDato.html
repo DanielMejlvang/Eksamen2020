@@ -3,16 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Vælg dato</title>
+    <link rel="stylesheet" type="text/css" href="../../static/MyCSS.css" th:href="@{/MyCSS.css}">
 </head>
 <body>
+    <h2>Indtast start og slutdato på kontrakten</h2>
+    <h4>Input skal være "YYYY-MM-DD"</h4>
     <div id="opretForm">
         <form action="/kontraktAuto" method="get">
-            Kunde ID: <input type="hidden" name="ku_id" th:value="${nyKontrakt.ku_id}" readonly><br>
+            <input type="hidden" name="ku_id" th:value="${nyKontrakt.ku_id}" readonly><br>
             Start dato: <input type="text" name="start_dato" required><br>
             Slut dato: <input type="text" name="slut_dato" required><br>
             <input type="submit" value="Videre">
         </form>
     </div>
-
+    <a href="/">
+        <button type = "button" id="homepage">
+            Forside
+        </button>
+    </a>
 </body>
 </html>

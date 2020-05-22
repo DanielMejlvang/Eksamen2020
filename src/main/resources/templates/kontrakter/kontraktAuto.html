@@ -7,10 +7,11 @@
 </head>
 <body>
     <h2>Vælg autocamper til kontrakten</h2>
+    <h4>Her er en liste over de autocampere, der er tilgængelige i den valgte periode</h4>
     <form action="/kontraktData">
         <input type="hidden" name="ku_id" th:value="${nyKontrakt.ku_id}" readonly>
-        <input type="text" name="start_dato" th:value="${nyKontrakt.start_dato}" readonly>
-        <input type="text" name="slut_dato" th:value="${nyKontrakt.slut_dato}" readonly> <br>
+        <input type="text" name="start_dato" th:value="${nyKontrakt.start_dato}" readonly> til
+        <input type="text" name="slut_dato" th:value="${nyKontrakt.slut_dato}" readonly> <br><br>
         <input type="number" name="a_id" placeholder="Input ID her">
         <input type="submit" value="Videre">
     </form>
@@ -25,10 +26,8 @@
             <th>Sengepladser</th>
             <th>Nummerplade</th>
             <th>Pris per dag</th>
-            <th></th>
         </tr>
         </thead>
-
         <tbody>
         <tr th:each="autocamper: ${autocamperliste}">
             <td th:text="${autocamper.a_id}" />
@@ -39,13 +38,6 @@
             <td th:text="${autocamper.a_senge}" />
             <td th:text="${autocamper.a_nummerplade}" />
             <td th:text="${autocamper.a_pris}" />
-            <td>
-                <a th:href="@{'/kontraktData/'+${autocamper.a_id}}">
-                    <button type="button" id="choice">
-                        Vælg
-                    </button>
-                </a>
-            </td>
         </tr>
         </tbody>
     </table>

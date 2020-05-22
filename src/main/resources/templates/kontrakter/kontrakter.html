@@ -1,13 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Kontrakter</title>
+    <link rel="stylesheet" type="text/css" href="../../static/MyCSS.css" th:href="@{/MyCSS.css}">
 </head>
 <body>
     <a href="/opretKontrakt">
         <button type = "button" id="addNew">
             Opret kontrakt
+        </button>
+    </a>
+    <a href="/">
+        <button type = "button" id="homepage">
+            Forside
         </button>
     </a>
 </body>

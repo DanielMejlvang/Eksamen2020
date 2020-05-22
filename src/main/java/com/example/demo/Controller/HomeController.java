@@ -121,6 +121,23 @@ public class HomeController {
         return "kontrakter/opretKontrakt";
     }
 
+    @GetMapping("/opretKontraktKunde")
+    public String opretKontraktKunde() {
+        return "kontrakter/opretKontraktKunde";
+    }
+
+    @PostMapping("opretKontraktKunde")
+    public String opretKontraktKunde(@ModelAttribute Kunde kunde, Model model) {
+        if (kundeService.tilfojKunde(kunde)) {
+            Kontrakt nyKontrakt = new Kontrakt();
+            nyKontrakt.setKu_id(kundeService.nyesteId());
+            model.addAttribute("nyKontrakt", nyKontrakt);
+            return "kontrakter/kontraktDato";
+        } else {
+            return "home/opretFejl";
+        }
+    }
+
     @GetMapping("/kontraktDato")
     public String kontraktDato(@ModelAttribute Kontrakt kontrakt, Model model) {
         //Kontrakt nyKontrakt = new Kontrakt();

@@ -6,7 +6,17 @@
     <link rel="stylesheet" type="text/css" href="../../static/MyCSS.css" th:href="@{/MyCSS.css}">
 </head>
 <body>
-<h2>Liste over kundeinformationer</h2>
+<h2>Vælg om du vil oprette en ny kunde eller vælge en eksisterende kunde</h2>
+
+<h3>For at oprette ny kunde, klik her: </h3>
+<a href="/opretKontraktKunde">
+    <button type="button" id="addNew">
+        Opret kunde
+    </button>
+</a><br><br>
+
+<h3>For at vælge eksisterende kunde, input et kunde ID i nendenstående felt og tryk "Videre"</h3>
+<h4>Liste over kundeinformationer</h4>
 <form action="/kontraktDato">
     <input type="number" name="ku_id" placeholder="Input ID her">
     <input type="submit" value="Videre">
@@ -22,7 +32,6 @@
         <th>Kørekort nr.</th>
         <th>Gade</th>
         <th>Postnummer</th>
-        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -35,13 +44,6 @@
         <td th:text="${kunde.korekort}" />
         <td th:text="${kunde.gade}" />
         <td th:text="${kunde.postnummer}" />
-        <td>
-            <a th:href="@{'/kontraktDato/'+${kunde.ku_id}}">
-                <button type="button" id = "choice">
-                    Vælg
-                </button>
-            </a>
-        </td>
     </tr>
     </tbody>
 </table>
