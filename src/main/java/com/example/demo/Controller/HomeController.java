@@ -180,8 +180,6 @@ public class HomeController {
     @PostMapping("/acceptKontrakt")
     public String acceptKontrakt(@ModelAttribute Kontrakt kontrakt) {
 
-        kontrakt.setKo_pris(kontrakt.udregnPris());
-
         if (kontraktService.tilfojKontrakt(kontrakt)) {
             return "redirect:/kontrakter";
         } else {
