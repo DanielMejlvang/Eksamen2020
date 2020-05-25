@@ -24,7 +24,7 @@ public class KundeRepository {
 
     //metode til at finde specifik kunde efter id
     public Kunde findKundeMedId(int id) {
-        String sql = "SELECT * FROM kunder WHERE ku_id = ?";
+        String sql = "SELECT * FROM kunder JOIN postnumre USING (postnummer) WHERE ku_id = ?";
         RowMapper<Kunde> rm = new BeanPropertyRowMapper<>(Kunde.class);
         return template.queryForObject(sql, rm, id);
     }

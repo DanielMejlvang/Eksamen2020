@@ -166,20 +166,16 @@ public class HomeController {
     }
 
     @GetMapping("/acceptKontrakt")
-    public String acceptKontrakt(@ModelAttribute Kontrakt kontrakt, Model model, SessionStatus status) {
-
-        //String[] checked = request.getParameterValues("ko_tilbehor[]");
-        //Kontrakt test = new Kontrakt(100, tempData.getKu_id(), tempData.getA_id(), tempData.getStart_dato(), tempData.getSlut_dato(), data.getAflevering(), data.getAfhentning(), Arrays.toString(checked), "", 0.0);
+    public String acceptKontrakt(@ModelAttribute Kontrakt kontrakt, Model model) {
         kontrakt.setKo_pris(autocamperService.findAutocamperMedId(kontrakt.getA_id()).getA_pris()*kontrakt.daysBetween() + kontrakt.udregnPris());
         model.addAttribute("nyKontrakt", kontrakt);
-        status.isComplete();
-        //System.out.println(temp);
+        model.addAttribute("valgtKunde", kundeService.findKundeMedId(kontrakt.getKu_id()));
+        model.addAttribute("valgtAutocamper", autocamperService.findAutocamperMedId(kontrakt.getA_id()));
         return "kontrakter/acceptKontrakt";
     }
 
     @PostMapping("/acceptKontrakt")
     public String acceptKontrakt(@ModelAttribute Kontrakt kontrakt) {
-
         if (kontraktService.tilfojKontrakt(kontrakt)) {
             return "redirect:/kontrakter";
         } else {

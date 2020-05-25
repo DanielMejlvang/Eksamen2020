@@ -87,3 +87,13 @@ tr{
     height: 50px;
     width: 150px;
 }
+
+.accept{
+    float: left;
+    width: 33.33%;
+}
+.row:after{
+    content: "";
+    display: table;
+    clear: both;
+}

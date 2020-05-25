@@ -6,27 +6,138 @@
     <link rel="stylesheet" type="text/css" th:href="@{/MyCSS.css}">
 </head>
 <body>
-    <h2>Dette er de indtastede informationer</h2>
-    <div id="opretForm">
-        <form action="/acceptKontrakt" method="post">
-            Kunde ID: <input type="text" name="ku_id" th:value="${nyKontrakt.ku_id}" readonly><br>
-            Autocamper ID: <input type="text" name="a_id" th:value="${nyKontrakt.a_id}" readonly><br>
-            Start dato: <input type="text" name="start_dato" th:value="${nyKontrakt.start_dato}" readonly><br>
-            Slut dato: <input type="text" name="slut_dato" th:value="${nyKontrakt.slut_dato}" readonly><br>
-            Afleveringslokation: <input type="text" name="aflevering" th:value="${nyKontrakt.aflevering}" readonly><br>
-            Afhentningslokation: <input type="text" name="afhentning" th:value="${nyKontrakt.afhentning}" readonly><br><br><br>
-            Cykelstativ: <input type="text" name="cykelstativ" th:value="${nyKontrakt.cykelstativ}" readonly><br>
-            Barnesæde: <input type="text" name="barnesaede" th:value="${nyKontrakt.barnesaede}" readonly><br>
-            Sengetøj: <input type="text" name="sengetoj" th:value="${nyKontrakt.sengetoj}" readonly><br>
-            Picnicbord + 4 stole: <input type="text" name="picnicbord" th:value="${nyKontrakt.picnicbord}" readonly><br>
-            Kommentar: <input type="text" name="ko_kommentar" th:value="${nyKontrakt.ko_kommentar}" readonly><br><br><br>
-            Total pris: <input type="text" name="ko_pris" th:value="${nyKontrakt.ko_pris}" readonly style="color: olivedrab; font-size: larger "><br>
-            Total pris: <input type="text" name="ko_pris" th:value="${nyKontrakt.ko_pris}" readonly style="color: olivedrab; font-size: larger "><br>
-            <h4>Er de indtastede informationer korrekte?</h4>
-            <input type="submit" value="Accept">
-            <button type="button" onclick="tilbage()">Tilbage</button>
-        </form>
+    <h2 style="horiz-align: center">Dette er de indtastede informationer</h2>
+    <div class="row">
+        <div class="accept">
+            <form action="/acceptKontrakt" method="post">
+                <h4 style="horiz-align: center">Kontraktinformation</h4>
+                <table>
+                    <tr>
+                        <td>Kunde ID</td>
+                        <td><input type="text" name="ku_id" th:value="${nyKontrakt.ku_id}" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>Autocamper ID</td>
+                        <td><input type="text" name="a_id" th:value="${nyKontrakt.a_id}" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>Start dato</td>
+                        <td><input type="text" name="start_dato" th:value="${nyKontrakt.start_dato}" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>Slut dato</td>
+                        <td><input type="text" name="slut_dato" th:value="${nyKontrakt.slut_dato}" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>Afleveringslokation</td>
+                        <td><input type="text" name="aflevering" th:value="${nyKontrakt.aflevering}" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>Afhentningslokation</td>
+                        <td><input type="text" name="afhentning" th:value="${nyKontrakt.afhentning}" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>Cykelstativ</td>
+                        <td><input type="text" name="cykelstativ" th:value="${nyKontrakt.cykelstativ}" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>Barnesæde</td>
+                        <td><input type="text" name="barnesaede" th:value="${nyKontrakt.barnesaede}" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>Sengetøj</td>
+                        <td><input type="text" name="sengetoj" th:value="${nyKontrakt.sengetoj}" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>Picnic bord + 4 stole</td>
+                        <td><input type="text" name="picnicbord" th:value="${nyKontrakt.picnicbord}" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>Kommentar</td>
+                        <td><input type="text" name="ko_kommentar" th:value="${nyKontrakt.ko_kommentar}" readonly></td>
+                    </tr>
+                    <tr style="background-color: lightgreen; font-size: larger">
+                        <td>Total pris i €</td>
+                        <td><input type="text" name="ko_pris" th:value="${nyKontrakt.ko_pris}" readonly></td>
+                    </tr>
+                </table>
+                <h4>Er de indtastede informationer korrekte?</h4>
+                <input type="submit" value="Accept">
+                <button type="button" onclick="tilbage()">Tilbage</button>
+            </form>
+        </div>
+        <div class="accept">
+            <h4 style="horiz-align: center">Valgt kunde</h4>
+            <table>
+                <tr>
+                    <td>Fornavn</td>
+                    <td th:text="${valgtKunde.fornavn}"></td>
+                </tr>
+                <tr>
+                    <td>Efternavn</td>
+                    <td th:text="${valgtKunde.efternavn}"></td>
+                </tr>
+                <tr>
+                    <td>Telefon nr.</td>
+                    <td th:text="${valgtKunde.telefon}"></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td th:text="${valgtKunde.email}"></td>
+                </tr>
+                <tr>
+                    <td>Gade</td>
+                    <td th:text="${valgtKunde.gade}"></td>
+                </tr>
+                <tr>
+                    <td>Postnummer</td>
+                    <td th:text="${valgtKunde.postnummer}"></td>
+                </tr>
+                <tr>
+                    <td>By</td>
+                    <td th:text="${valgtKunde.bynavn}"></td>
+                </tr>
+                <tr>
+                    <td>Land</td>
+                    <td th:text="${valgtKunde.land}"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="accept">
+            <h4 style="horiz-align: center">Valgt autocamper</h4>
+            <table>
+                <tr>
+                    <td>Type</td>
+                    <td th:text="${valgtAutocamper.a_type}"></td>
+                </tr>
+                <tr>
+                    <td>Mærke</td>
+                    <td th:text="${valgtAutocamper.a_maerke}"></td>
+                </tr>
+                <tr>
+                    <td>Model</td>
+                    <td th:text="${valgtAutocamper.a_model}"></td>
+                </tr>
+                <tr>
+                    <td>Odometer</td>
+                    <td th:text="${valgtAutocamper.a_odometer}"></td>
+                </tr>
+                <tr>
+                    <td>Antal senge</td>
+                    <td th:text="${valgtAutocamper.a_senge}"></td>
+                </tr>
+                <tr>
+                    <td>Nummerplade</td>
+                    <td th:text="${valgtAutocamper.a_nummerplade}"></td>
+                </tr>
+                <tr>
+                    <td>Pris pr. dag</td>
+                    <td th:text="${valgtAutocamper.a_pris}"></td>
+                </tr>
+            </table>
+        </div>
     </div>
+
     <a href="/">
         <button type = "button" id="homepage">
             Forside
