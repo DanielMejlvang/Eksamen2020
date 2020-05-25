@@ -16,7 +16,7 @@ public class KundeRepository {
 
     //metode til at hente data fra database
     public List<Kunde> listKunder() {
-        String sql = "SELECT * FROM kunder";
+        String sql = "SELECT * FROM kunder JOIN postnumre USING (postnummer)";
         //rowmapper putter data direkte ind i et objekt af Kunde.class
         RowMapper<Kunde> rm = new BeanPropertyRowMapper<>(Kunde.class);
         return template.query(sql, rm);

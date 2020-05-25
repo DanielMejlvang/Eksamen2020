@@ -37,7 +37,7 @@ public class HomeController {
     }
 
     @GetMapping("/kundeliste")
-    public String kundeliste(@ModelAttribute Kunde kunde, Model model) {
+    public String kundeliste(Model model) {
         List<Kunde> kundeliste = kundeService.listKunder();
         model.addAttribute("kundeliste", kundeliste);
         return "kunder/kundeliste";
