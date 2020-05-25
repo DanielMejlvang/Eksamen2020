@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Kontrakt Data</title>
+    <link rel="stylesheet" type="text/css" href="../../static/MyCSS.css" th:href="@{/MyCSS.css}">
 </head>
 <body>
     Indtast yderligere oplysninger
@@ -14,25 +15,37 @@
             <input type="hidden" name="slut_dato" th:value="${nyKontrakt.slut_dato}">
             Afleverings lokation: <input type="text" name="aflevering"><br>
             Afhentnings lokation: <input type="text" name="afhentning"><br>
-            Tilbehor: <input type="text" name="ko_tilbehor"><br>
             Kommentar: <input type="text" name="ko_kommentar">
-            <table id="tilbehor">
+            <table>
                 <thead>
-                    <tr>
-                        <th>Tilbehør</th>
-                        <th>Pris per dag</th>
-                    </tr>
+                <tr>
+                    <th>Navn</th>
+                    <th>Pris per dag i €</th>
+                    <th>Valg</th>
+                </tr>
                 </thead>
+
                 <tbody>
-                    <tr th:each="tilbehor: ${tilbehorliste}">
-                        <td th:text="${tilbehor.navn}"></td>
-                        <td th:text="${tilbehor.pris}"></td>
-                        <td><input class="double" type="checkbox" th:field="${tilbehor.pris}" th:value="${tilbehor.pris}" id="tilbehorCheck">
-                            <label class="form-check-input" for="tilbehorCheck">
-                                Vælg denne
-                            </label>
-                        </td>
-                    </tr>
+                <tr>
+                    <th>Cykelstativ</th>
+                    <th>9.99</th>
+                    <th><label for="cykelstativ"></label><input type="checkbox" id="cykelstativ" name="cykelstativ"></th>
+                </tr>
+                <tr>
+                    <th>Barnesæde</th>
+                    <th>2.9</th>
+                    <th><label for="barnesaede"></label><input type="checkbox" id="barnesaede" name="barnesaede"></th>
+                </tr>
+                <tr>
+                    <th>Sengetøj</th>
+                    <th>5,-</th>
+                    <th><label for="sengetoej"></label><input type="checkbox" id="sengetoej" name="sengetoej"></th>
+                </tr>
+                <tr>
+                    <th>Picnicbord + 4 stole</th>
+                    <th>8.99</th>
+                    <th><label for="picnicbord"></label><input type="checkbox" id="picnicbord" name="picnicbord"></th>
+                </tr>
                 </tbody>
             </table>
             <input type="submit" value="Gem">

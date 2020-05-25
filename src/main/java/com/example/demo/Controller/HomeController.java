@@ -5,6 +5,7 @@ import com.example.demo.Service.AutocamperService;
 import com.example.demo.Service.KontraktService;
 import com.example.demo.Service.KundeService;
 import com.example.demo.Service.TilbehorService;
+import org.apache.el.parser.BooleanNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.stereotype.Controller;
@@ -64,7 +65,7 @@ public class HomeController {
         if (kundeService.tilfojKunde(kunde)) {
             return "redirect:/";
         } else {
-            return "home/opretFejl";
+            return "/kunder";
         }
     }
 
@@ -155,42 +156,21 @@ public class HomeController {
         modelList.addAttribute("autocamperliste", autocamperliste);
         return "kontrakter/kontraktAuto";
     }
-//En masse rod i kontraktData og acceptKontrakt
+
     @GetMapping("/kontraktData")
-    public String kontraktData(@ModelAttribute Kontrakt kontrakt, @ModelAttribute Tilbehor tilbehor, Model model, Model modelListe, Model modelArrayList, ArrayList<Double> prisArrayList) {
+    public String kontraktData(@ModelAttribute Kontrakt kontrakt, Model model) {
         //kontrakt.setA_id(a_id);
         model.addAttribute("nyKontrakt", kontrakt);
-        List<Tilbehor> tilbehorliste = tilbehorService.listTilbehor();
-        modelListe.addAttribute("tilbehorliste", tilbehorliste);
-        modelArrayList.addAttribute("prisArrayList", prisArrayList);
-
-        System.out.println("prisArrayList = " + prisArrayList.toString());
 
         return "kontrakter/kontraktData";
     }
 
     @GetMapping("/acceptKontrakt")
-    public String acceptKontrakt(@ModelAttribute Kontrakt kontrakt, Model model, Model modelListe, SessionStatus status, @ModelAttribute ArrayList<Double> prisArrayList) {
-
-        modelListe.addAttribute("prisArrayList", prisArrayList);
-        if (prisArrayList == null){
-            System.out.println("Arraylisten er null");
-        } else {
-            System.out.println(prisArrayList.toString());
-        }
-
-
-        double tilbehorSum = 0;
-        if(prisArrayList.size()>0) {
-            for (double p : prisArrayList) {
-                tilbehorSum += p;
-            }
-        }
-        System.out.println(tilbehorSum);
+    public String acceptKontrakt(@ModelAttribute Kontrakt kontrakt, Model model, SessionStatus status) {
 
         //String[] checked = request.getParameterValues("ko_tilbehor[]");
         //Kontrakt test = new Kontrakt(100, tempData.getKu_id(), tempData.getA_id(), tempData.getStart_dato(), tempData.getSlut_dato(), data.getAflevering(), data.getAfhentning(), Arrays.toString(checked), "", 0.0);
-        kontrakt.setKo_pris(autocamperService.findAutocamperMedId(kontrakt.getA_id()).getA_pris()*kontrakt.daysBetween() + tilbehorSum);
+        kontrakt.setKo_pris(autocamperService.findAutocamperMedId(kontrakt.getA_id()).getA_pris()*kontrakt.daysBetween() + kontrakt.udregnPris());
         model.addAttribute("nyKontrakt", kontrakt);
         status.isComplete();
         //System.out.println(temp);
@@ -199,6 +179,9 @@ public class HomeController {
 
     @PostMapping("/acceptKontrakt")
     public String acceptKontrakt(@ModelAttribute Kontrakt kontrakt) {
+
+        kontrakt.setKo_pris(kontrakt.udregnPris());
+
         if (kontraktService.tilfojKontrakt(kontrakt)) {
             return "redirect:/kontrakter";
         } else {

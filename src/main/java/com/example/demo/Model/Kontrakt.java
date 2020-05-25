@@ -21,9 +21,44 @@ public class Kontrakt {
     private String slut_dato;
     private String aflevering;
     private String afhentning;
-    private String ko_tilbehor;
     private String ko_kommentar;
     private double ko_pris;
+    private boolean cykelstativ;
+    private boolean barnesaede;
+    private boolean sengetoj;
+    private boolean picnicbord;
+
+    public boolean isCykelstativ() {
+        return cykelstativ;
+    }
+
+    public void setCykelstativ(boolean cykelstativ) {
+        this.cykelstativ = cykelstativ;
+    }
+
+    public boolean isBarnesaede() {
+        return barnesaede;
+    }
+
+    public void setBarnesaede(boolean barnesaede) {
+        this.barnesaede = barnesaede;
+    }
+
+    public boolean isSengetoj() {
+        return sengetoj;
+    }
+
+    public void setSengetoj(boolean sengetoj) {
+        this.sengetoj = sengetoj;
+    }
+
+    public boolean isPicnicbord() {
+        return picnicbord;
+    }
+
+    public void setPicnicbord(boolean picnicbord) {
+        this.picnicbord = picnicbord;
+    }
 
     public Kontrakt() {
     }
@@ -38,7 +73,7 @@ public class Kontrakt {
         this.slut_dato = slut_dato;
     }*/
 
-    public Kontrakt(int ko_id, int ku_id, int a_id, String start_dato, String slut_dato, String aflevering, String afhentning, String ko_tilbehor, String ko_kommentar, double ko_pris) {
+    public Kontrakt(int ko_id, int ku_id, int a_id, String start_dato, String slut_dato, String aflevering, String afhentning, String ko_kommentar, double ko_pris, boolean cykelstativ, boolean barnesaede, boolean sengetoj, boolean picnicbord) {
         this.ko_id = ko_id;
         this.ku_id = ku_id;
         this.a_id = a_id;
@@ -46,9 +81,31 @@ public class Kontrakt {
         this.slut_dato = slut_dato;
         this.aflevering = aflevering;
         this.afhentning = afhentning;
-        this.ko_tilbehor = ko_tilbehor;
         this.ko_kommentar = ko_kommentar;
         this.ko_pris = ko_pris;
+        this.cykelstativ = cykelstativ;
+        this.barnesaede = barnesaede;
+        this.sengetoj = sengetoj;
+        this.picnicbord = picnicbord;
+    }
+
+    public double udregnPris(){
+        double sum = 0;
+
+        if (this.cykelstativ){
+            sum += 9.99;
+        }
+        if (this.barnesaede){
+            sum += 2.9;
+        }
+        if(this.sengetoj){
+            sum += 5;
+        }
+        if(this.picnicbord){
+            sum += 8.99;
+        }
+
+        return (this.getKo_pris() + sum*this.daysBetween());
     }
 
     public double daysBetween(){
@@ -119,14 +176,6 @@ public class Kontrakt {
 
     public void setAfhentning(String afhentning) {
         this.afhentning = afhentning;
-    }
-
-    public String getKo_tilbehor() {
-        return ko_tilbehor;
-    }
-
-    public void setKo_tilbehor(String ko_tilbehor) {
-        this.ko_tilbehor = ko_tilbehor;
     }
 
     public String getKo_kommentar() {
