@@ -176,4 +176,11 @@ public class HomeController {
             return "home/opretFejl";
         }
     }
+
+    @GetMapping("/kontraktListe")
+    public String kontraktListe(Model model){
+        List<Kontrakt> kontraktliste = kontraktService.listKontrakter();
+        model.addAttribute("kontraktliste", kontraktliste);
+        return "kontrakter/kontraktListe";
+    }
 }

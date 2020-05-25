@@ -55,6 +55,11 @@ tr{
     color:black;
     margin-bottom: 1px;
 }
+#visButton{
+    background-color: forestgreen;
+    color: white;
+    margin-bottom: 1px;
+}
 .split{
     height: 100%;
     width: 50%;
