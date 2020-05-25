@@ -10,7 +10,7 @@
 
 <h3>For at oprette ny kunde, klik her: </h3>
 <a href="/opretKontraktKunde">
-    <button type="button" id="addNew">
+    <button type="button" id="tilfojButton" style="height: 25px">
         Opret kunde
     </button>
 </a><br><br>
@@ -32,6 +32,8 @@
         <th>Kørekort nr.</th>
         <th>Gade</th>
         <th>Postnummer</th>
+        <th>By</th>
+        <th>Land</th>
     </tr>
     </thead>
     <tbody>
@@ -44,6 +46,8 @@
         <td th:text="${kunde.korekort}" />
         <td th:text="${kunde.gade}" />
         <td th:text="${kunde.postnummer}" />
+        <td th:text="${kunde.bynavn}" />
+        <td th:text="${kunde.land}" />
     </tr>
     </tbody>
 </table>

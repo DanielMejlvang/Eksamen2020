@@ -78,7 +78,7 @@ tr{
 #tilfojButton{
     height: 50px;
     width: 150px;
-    background-color: green;
+    background-color: aquamarine;
     margin: 5px;
 }
 
@@ -96,4 +96,12 @@ tr{
     content: "";
     display: table;
     clear: both;
+}
+#acceptKnap{
+    height: 25px;
+    background-color: aquamarine;
+}
+#tilbageKnap{
+    height: 25px;
+    background-color: lightpink;
 }

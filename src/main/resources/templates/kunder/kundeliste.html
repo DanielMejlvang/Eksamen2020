@@ -18,6 +18,8 @@
                 <th>Kørekort nr.</th>
                 <th>Gade</th>
                 <th>Postnummer</th>
+                <th>By</th>
+                <th>Land</th>
                 <th></th>
             </tr>
         </thead>
@@ -31,6 +33,8 @@
                 <td th:text="${kunde.korekort}" />
                 <td th:text="${kunde.gade}" />
                 <td th:text="${kunde.postnummer}" />
+                <td th:text="${kunde.bynavn}" />
+                <td th:text="${kunde.land}" />
                 <td>
                     <a th:href="@{'/sletKunde/'+${kunde.ku_id}}">
                         <button type="button" id = "sletButton" onclick = "return confirm('Er du sikker?')">
