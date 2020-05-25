@@ -3,18 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Opret autocamper</title>
-    <link rel="stylesheet" type="text/css" href="../../static/MyCSS.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/MyCSS.css}">
 </head>
 <body>
     <h3>Dette er de indtastede informationer</h3>
     <form action="/acceptAutocamper" method="post">
-        <input type="text" name="a_type" th:value="${nyAutocamper.a_type}" readonly>
-        <input type="text" name="a_maerke" th:value="${nyAutocamper.a_maerke}" readonly>
-        <input type="text" name="a_model" th:value="${nyAutocamper.a_model}" readonly>
-        <input type="number" name="a_odometer" th:value="${nyAutocamper.a_odometer}" readonly>
-        <input type="number" name="a_senge" th:value="${nyAutocamper.a_senge}" readonly>
-        <input type="text" name="a_nummerplade" th:value="${nyAutocamper.a_nummerplade}" readonly>
-        <input type="number" name="a_pris" th:value="${nyAutocamper.a_pris}" readonly>
+        <table style="width: 33%">
+            <tr>
+                <td>Type</td>
+                <td><input type="text" name="a_type" th:value="${nyAutocamper.a_type}" readonly></td>
+            </tr>
+            <tr>
+                <td>Mærke</td>
+                <td><input type="text" name="a_maerke" th:value="${nyAutocamper.a_maerke}" readonly></td>
+            </tr>
+            <tr>
+                <td>Model</td>
+                <td><input type="text" name="a_model" th:value="${nyAutocamper.a_model}" readonly></td>
+            </tr>
+            <tr>
+                <td>Odometer</td>
+                <td><input type="number" name="a_odometer" th:value="${nyAutocamper.a_odometer}" readonly></td>
+            </tr>
+            <tr>
+                <td>Antal senge</td>
+                <td><input type="number" name="a_senge" th:value="${nyAutocamper.a_senge}" readonly></td>
+            </tr>
+            <tr>
+                <td>Nummerplade</td>
+                <td><input type="text" name="a_nummerplade" th:value="${nyAutocamper.a_nummerplade}" readonly></td>
+            </tr>
+            <tr>
+                <td>Pris per dag</td>
+                <td><input type="number" name="a_pris" th:value="${nyAutocamper.a_pris}" readonly></td>
+            </tr>
+        </table>
         <h4>Er de indtastede informationer korrekte?</h4>
         <input type="submit" value="Accept">
         <button type="button" onclick="tilbage()">Tilbage</button>

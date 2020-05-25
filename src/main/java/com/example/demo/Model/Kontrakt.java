@@ -28,50 +28,8 @@ public class Kontrakt {
     private boolean sengetoj;
     private boolean picnicbord;
 
-    public boolean isCykelstativ() {
-        return cykelstativ;
-    }
-
-    public void setCykelstativ(boolean cykelstativ) {
-        this.cykelstativ = cykelstativ;
-    }
-
-    public boolean isBarnesaede() {
-        return barnesaede;
-    }
-
-    public void setBarnesaede(boolean barnesaede) {
-        this.barnesaede = barnesaede;
-    }
-
-    public boolean isSengetoj() {
-        return sengetoj;
-    }
-
-    public void setSengetoj(boolean sengetoj) {
-        this.sengetoj = sengetoj;
-    }
-
-    public boolean isPicnicbord() {
-        return picnicbord;
-    }
-
-    public void setPicnicbord(boolean picnicbord) {
-        this.picnicbord = picnicbord;
-    }
-
     public Kontrakt() {
     }
-
-  /*  public Kontrakt(String ku_id) {
-        this.ku_id = ku_id;
-    }
-
-    public Kontrakt(String ku_id, String start_dato, String slut_dato) {
-        this.ku_id = ku_id;
-        this.start_dato = start_dato;
-        this.slut_dato = slut_dato;
-    }*/
 
     public Kontrakt(int ko_id, int ku_id, int a_id, String start_dato, String slut_dato, String aflevering, String afhentning, String ko_kommentar, double ko_pris, boolean cykelstativ, boolean barnesaede, boolean sengetoj, boolean picnicbord) {
         this.ko_id = ko_id;
@@ -89,7 +47,7 @@ public class Kontrakt {
         this.picnicbord = picnicbord;
     }
 
-    public double udregnPris(){
+    public double udregnPrisForTilbehor(){
         double sum = 0;
 
         if (this.cykelstativ){
@@ -110,16 +68,17 @@ public class Kontrakt {
 
     public double daysBetween(){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        long diff = 0;
         try{
             Date startDato = sdf.parse(start_dato);
             Date slutDato = sdf.parse(slut_dato);
             long diffInMillies = Math.abs(slutDato.getTime() - startDato.getTime());
-            long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-            return (double) diff;
+            diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+            //return (double) diff;
         } catch (ParseException e){
             System.out.println("Couldn't parse");
         }
-        return 2;
+        return (double) diff;
     }
 
     public int getKo_id() {
@@ -192,5 +151,37 @@ public class Kontrakt {
 
     public void setKo_pris(double ko_pris) {
         this.ko_pris = ko_pris;
+    }
+
+    public boolean isCykelstativ() {
+        return cykelstativ;
+    }
+
+    public void setCykelstativ(boolean cykelstativ) {
+        this.cykelstativ = cykelstativ;
+    }
+
+    public boolean isBarnesaede() {
+        return barnesaede;
+    }
+
+    public void setBarnesaede(boolean barnesaede) {
+        this.barnesaede = barnesaede;
+    }
+
+    public boolean isSengetoj() {
+        return sengetoj;
+    }
+
+    public void setSengetoj(boolean sengetoj) {
+        this.sengetoj = sengetoj;
+    }
+
+    public boolean isPicnicbord() {
+        return picnicbord;
+    }
+
+    public void setPicnicbord(boolean picnicbord) {
+        this.picnicbord = picnicbord;
     }
 }

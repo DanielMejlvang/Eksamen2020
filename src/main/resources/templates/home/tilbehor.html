@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Tilbehør</title>
-    <link rel="stylesheet" type="text/css" href="MyCSS.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/MyCSS.css}">
 </head>
 <body>
     <div class="split venstre">
-        <h2> Tilbehør liste</h2>
-        <div id="venstreTilbehor">
         <h2>Liste over tilbehør</h2>
         <table>
             <thead>
             <tr>
                 <th>Tilbehør</th>
-                <th>Pris per dag</th>
+                <th>Pris per dag i €</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -24,26 +23,31 @@
                 <td>
                     <a th:href="@{'/sletTilbehor/'+${tilbehor.navn}}">
                         <button type="button" id="sletButton" onclick="return confirm('Er du sikker?')">
-                            slet
+                            Slet
                         </button>
                     </a>
                 </td>
             </tr>
             </tbody>
         </table>
-        </div>
     </div>
 
 
     <div class="split højre">
         <h2>Opret nyt tilbehør</h2>
-        <div id="opretForm">
-            <form action="/opretTilbehor" method="get">
-                Tilbehør navn: <input type="text" name="navn" required><br>
-                Pris: <input type="number" name="pris" required><br>
-                <input type="submit" value="Gem tilbehør">
-            </form>
-        </div>
+        <form action="/opretTilbehor" method="get">
+            <table style="width: 33%">
+                <tr>
+                    <td>Tilbehør navn</td>
+                    <td><input type="text" name="navn" required></td>
+                </tr>
+                <tr style="background-color: white">
+                    <td>Pris per dag i €</td>
+                    <td><input type="number" name="pris" required></td>
+                </tr>
+            </table>
+            <input type="submit" value="Gem tilbehør">
+        </form>
     </div>
     <a href="/">
         <button type = "button" id="homepage">

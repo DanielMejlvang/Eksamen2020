@@ -3,20 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Opret kunde</title>
-    <link rel="stylesheet" type="text/css" href="../../static/MyCSS.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/MyCSS.css}">
 </head>
 <body>
     <h3>Dette er de indtastede informationer</h3>
     <form action="/acceptKunde" method="post">
-        <input type="text" name="fornavn" th:value="${nyKunde.fornavn}" readonly>
-        <input type="text" name="efternavn" th:value="${nyKunde.efternavn}" readonly>
-        <input type="text" name="telefon" th:value="${nyKunde.telefon}" readonly>
-        <input type="text" name="email" th:value="${nyKunde.email}" readonly>
-        <input type="text" name="korekort" th:value="${nyKunde.korekort}" readonly>
-        <input type="text" name="gade" th:value="${nyKunde.gade}" readonly>
-        <input type="text" name="postnummer" th:value="${nyKunde.postnummer}" readonly>
-        <input type="text" name="bynavn" th:value="${nyKunde.bynavn}" readonly>
-        <input type="text" name="land" th:value="${nyKunde.land}" readonly>
+        <table style="width: 33%">
+            <tr>
+                <td>Fornavn</td>
+                <td><input type="text" name="fornavn" th:value="${nyKunde.fornavn}" readonly></td>
+            </tr>
+            <tr>
+                <td>Efternavn</td>
+                <td><input type="text" name="efternavn" th:value="${nyKunde.efternavn}" readonly></td>
+            </tr>
+            <tr>
+                <td>Telefon</td>
+                <td><input type="text" name="telefon" th:value="${nyKunde.telefon}" readonly></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="text" name="email" th:value="${nyKunde.email}" readonly></td>
+            </tr>
+            <tr>
+                <td>Kørekort nr.</td>
+                <td><input type="text" name="korekort" th:value="${nyKunde.korekort}" readonly></td>
+            </tr>
+            <tr>
+                <td>Gade</td>
+                <td><input type="text" name="gade" th:value="${nyKunde.gade}" readonly></td>
+            </tr>
+            <tr>
+                <td>Postnummer</td>
+                <td><input type="text" name="postnummer" th:value="${nyKunde.postnummer}" readonly></td>
+            </tr>
+            <tr>
+                <td>By</td>
+                <td><input type="text" name="bynavn" th:value="${nyKunde.bynavn}" readonly></td>
+            </tr>
+            <tr>
+                <td>Land</td>
+                <td><input type="text" name="land" th:value="${nyKunde.land}" readonly></td>
+            </tr>
+        </table>
         <h4>Er de indtastede informationer korrekt?</h4>
         <input type="submit" value="Accept">
         <button type="button" onclick="tilbage()">Tilbage</button>

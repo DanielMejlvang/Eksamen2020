@@ -5,17 +5,11 @@ import com.example.demo.Service.AutocamperService;
 import com.example.demo.Service.KontraktService;
 import com.example.demo.Service.KundeService;
 import com.example.demo.Service.TilbehorService;
-import org.apache.el.parser.BooleanNode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.support.SessionStatus;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -36,7 +30,7 @@ public class HomeController {
     }
 
 
-    //Håndtering af kunder
+    //Håndtering af kunder-sider
     @GetMapping("/kunder")
     public String kunde() {
         return "home/kunder";
@@ -63,12 +57,13 @@ public class HomeController {
     @PostMapping("/acceptKunde")
     public String acceptKunde(@ModelAttribute Kunde kunde) {
         if (kundeService.tilfojKunde(kunde)) {
-            return "redirect:/";
+            return "redirect:/kunder";
         } else {
             return "/kunder";
         }
     }
 
+    //Håndtering af autocampere-sider
     @GetMapping("/autocampere")
     public String Autocamper(@ModelAttribute Autocamper autocamper, Model model){
         List<Autocamper> autocamperliste = autocamperService.listAutocampere();
@@ -90,12 +85,13 @@ public class HomeController {
     @PostMapping("/acceptAutocamper")
     public String acceptAutocamper(@ModelAttribute Autocamper autocamper){
         if(autocamperService.tilfojAutocamper(autocamper)) {
-            return "redirect:/";
+            return "redirect:/autocampere";
         } else {
             return "home/opretFejl";
         }
     }
 
+    //Håndtering af tilbehør-sider
     @GetMapping("/tilbehor")
     public String tilbehor(@ModelAttribute Tilbehor tilbehor, Model model) {
         List<Tilbehor> tilbehorliste = tilbehorService.listTilbehor();
@@ -112,6 +108,7 @@ public class HomeController {
         }
     }
 
+    //Håndtering af kontrakter-sider
     @GetMapping("/kontrakter")
     public String kontrakter() {
         return "kontrakter/kontrakter";
@@ -143,31 +140,28 @@ public class HomeController {
 
     @GetMapping("/kontraktDato")
     public String kontraktDato(@ModelAttribute Kontrakt kontrakt, Model model) {
-        //Kontrakt nyKontrakt = new Kontrakt();
-        //nyKontrakt.setKu_id(id);
         model.addAttribute("nyKontrakt", kontrakt);
         return "kontrakter/kontraktDato";
     }
 
     @GetMapping("/kontraktAuto")
-    public String kontraktAuto(@ModelAttribute Kontrakt kontrakt, @ModelAttribute Autocamper autocamper, Model model, Model modelList) {
+    public String kontraktAuto(@ModelAttribute Kontrakt kontrakt, Model model) {
         model.addAttribute("nyKontrakt", kontrakt);
         List<Autocamper> autocamperliste = autocamperService.listFrieAutocampere(kontrakt.getStart_dato(), kontrakt.getSlut_dato());
-        modelList.addAttribute("autocamperliste", autocamperliste);
+        model.addAttribute("autocamperliste", autocamperliste);
         return "kontrakter/kontraktAuto";
     }
 
     @GetMapping("/kontraktData")
     public String kontraktData(@ModelAttribute Kontrakt kontrakt, Model model) {
-        //kontrakt.setA_id(a_id);
         model.addAttribute("nyKontrakt", kontrakt);
-
         return "kontrakter/kontraktData";
     }
 
     @GetMapping("/acceptKontrakt")
     public String acceptKontrakt(@ModelAttribute Kontrakt kontrakt, Model model) {
-        kontrakt.setKo_pris(autocamperService.findAutocamperMedId(kontrakt.getA_id()).getA_pris()*kontrakt.daysBetween() + kontrakt.udregnPris());
+        kontrakt.setKo_pris(autocamperService.findAutocamperMedId(kontrakt.getA_id()).getA_pris() *
+                            kontrakt.daysBetween() + kontrakt.udregnPrisForTilbehor());
         model.addAttribute("nyKontrakt", kontrakt);
         model.addAttribute("valgtKunde", kundeService.findKundeMedId(kontrakt.getKu_id()));
         model.addAttribute("valgtAutocamper", autocamperService.findAutocamperMedId(kontrakt.getA_id()));
