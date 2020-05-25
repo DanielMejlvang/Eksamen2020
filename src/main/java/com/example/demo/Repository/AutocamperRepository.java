@@ -46,10 +46,10 @@ public class AutocamperRepository {
     public List<Autocamper> listFrieAutocampere(String startDato, String slutDato) {
         String sql = "SELECT * FROM autocampere WHERE a_id NOT IN" +
                      "(SELECT a_id FROM kontrakter LEFT JOIN autocampere USING (a_id)" +
-                     "WHERE ('"+startDato+"' <= start_dato AND '"+slutDato+"' >= start_dato) OR" +
-                     "('"+startDato+"' <= slut_dato AND '"+slutDato+"' >= slut_dato) OR " +
-                     "('"+startDato+"' >= start_dato AND '"+slutDato+"' <= slut_dato))";
+                     "WHERE (? <= start_dato AND ? >= start_dato) OR" +
+                     "(? <= slut_dato AND ? >= slut_dato) OR " +
+                     "(? >= start_dato AND ? <= slut_dato))";
         RowMapper<Autocamper> rm = new BeanPropertyRowMapper<>(Autocamper.class);
-        return template.query(sql, rm);
+        return template.query(sql, rm, startDato, slutDato, startDato, slutDato, startDato, slutDato);
     }
 }
