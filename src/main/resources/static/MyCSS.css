@@ -15,9 +15,8 @@
 
 #homepage{
     position: fixed;
-    top: 1em;
-    right: 1em;
-    background-color: burlywood;
+    top: 2em;
+    right: 2em;
 }
 .input[type=text] {
     border: 1px black;
