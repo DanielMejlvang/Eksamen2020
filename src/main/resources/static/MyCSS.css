@@ -41,7 +41,7 @@ td, th{
     padding: 2px;
 }
 tr:nth-child(even){
-    background-color: lightgray;
+    background-color: lightblue;
 }
 tr{
     height: 40px;
