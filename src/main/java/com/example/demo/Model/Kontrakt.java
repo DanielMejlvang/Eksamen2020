@@ -47,23 +47,33 @@ public class Kontrakt {
         this.picnicbord = picnicbord;
     }
 
+    public void udregnTotal(double a_pris) {
+        ko_pris *= 0.7;
+        ko_pris += udregnPrisForTilbehor();
+        ko_pris += autocamperPris(a_pris);
+    }
+
     public double udregnPrisForTilbehor(){
         double sum = 0;
 
-        if (this.cykelstativ){
+        if (cykelstativ){
             sum += 9.99;
         }
-        if (this.barnesaede){
+        if (barnesaede){
             sum += 2.9;
         }
-        if(this.sengetoj){
+        if(sengetoj){
             sum += 5;
         }
-        if(this.picnicbord){
+        if(picnicbord){
             sum += 8.99;
         }
 
-        return (this.getKo_pris() + sum*this.daysBetween());
+        return (sum * this.daysBetween());
+    }
+
+    public double autocamperPris(double a_pris) {
+        return a_pris * daysBetween();
     }
 
     public double daysBetween(){
@@ -74,7 +84,6 @@ public class Kontrakt {
             Date slutDato = sdf.parse(slut_dato);
             long diffInMillies = Math.abs(slutDato.getTime() - startDato.getTime());
             diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-            //return (double) diff;
         } catch (ParseException e){
             System.out.println("Couldn't parse");
         }

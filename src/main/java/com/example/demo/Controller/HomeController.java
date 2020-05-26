@@ -160,8 +160,7 @@ public class HomeController {
 
     @GetMapping("/acceptKontrakt")
     public String acceptKontrakt(@ModelAttribute Kontrakt kontrakt, Model model) {
-        kontrakt.setKo_pris(autocamperService.findAutocamperMedId(kontrakt.getA_id()).getA_pris() *
-                            kontrakt.daysBetween() + kontrakt.udregnPrisForTilbehor());
+        kontrakt.udregnTotal(autocamperService.findAutocamperMedId(kontrakt.getA_id()).getA_pris());
         model.addAttribute("nyKontrakt", kontrakt);
         model.addAttribute("valgtKunde", kundeService.findKundeMedId(kontrakt.getKu_id()));
         model.addAttribute("valgtAutocamper", autocamperService.findAutocamperMedId(kontrakt.getA_id()));
