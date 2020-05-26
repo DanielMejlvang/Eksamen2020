@@ -5,7 +5,7 @@
     <title>Opret kunde</title>
     <link rel="stylesheet" type="text/css" th:href="@{/MyCSS.css}">
 </head>
-<body>
+<body id="bodyStyle">
     <h3>Dette er de indtastede informationer</h3>
     <form action="/acceptKunde" method="post">
         <table style="width: 33%">
@@ -47,7 +47,7 @@
             </tr>
         </table>
         <h4>Er de indtastede informationer korrekt?</h4>
-        <input type="submit" value="Accept" id="acceptKnap">
+        <input type="submit" value="Accept" id="gemButton">
         <button type="button" id="tilbageKnap" onclick="tilbage()">Tilbage</button>
     </form>
     <a href="/">

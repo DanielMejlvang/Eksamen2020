@@ -5,7 +5,7 @@
     <title>Opret kunde</title>
     <link rel="stylesheet" type="text/css" href="MyCSS.css">
 </head>
-<body>
+<body id="bodyStyle">
     <h2>Opret ny kunde</h2>
     <form action="/opretKunde" method="post">
         <div id="opretForm">
@@ -18,7 +18,7 @@
             Postnummer: <input type="text" name="postnummer" required oninvalid="this.setCustomValidity('Indtast venligst et postnummer')" oninput="this.setCustomValidity('')"><br>
             By: <input type="text" name="bynavn" required oninvalid="this.setCustomValidity('Indtast venligst et bynavn')" oninput="this.setCustomValidity('')"><br>
             Land: <input type="text" name="land" required oninvalid="this.setCustomValidity('Indtast venligst et navn')" oninput="this.setCustomValidity('')"><br>
-            <input type="submit" value="Gem kunde" id="gemButton">
+            <input type="submit" value="Gem" id="gemButton">
             <button type="button" id="tilbageKnap" onclick="tilbage()">Tilbage</button>
         </div>
     </form>
