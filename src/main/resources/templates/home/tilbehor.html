@@ -8,6 +8,7 @@
 <body id="bodyStyle">
     <div class="split venstre">
         <h2>Liste over tilbehør</h2>
+        <button type="button" id="tilbageKnap" onclick="tilbage()">Tilbage</button>
         <table>
             <thead>
             <tr>
@@ -52,5 +53,10 @@
     <a href="/">
         <input type="image" src="NMRlogo.png" width="48" height="48" id="homepage">
     </a>
+    <script>
+        function tilbage() {
+            window.history.back();
+        }
+    </script>
 </body>
 </html>
