@@ -13,8 +13,8 @@
             <input type="hidden" name="ku_id" th:value="${nyKontrakt.ku_id}" readonly><br>
             Start dato: <input type="date" name="start_dato" required oninvalid="this.setCustomValidity('Indtast venligst en gyldig dato YYYY-MM-DD')" oninput="this.setCustomValidity('')"><br>
             Slut dato: <input type="date" name="slut_dato" required oninvalid="this.setCustomValidity('Indtast venligst en gyldig dato YYYY-MM-DD')" oninput="this.setCustomValidity('')"><br>
-            <button type="button" id="tilbageKnap" onclick="tilbage()">Tilbage</button>
             <input type="submit" value="Videre" id="videreButton">
+            <button type="button" id="tilbageKnap" onclick="tilbage()">Tilbage</button>
         </form>
     </div>
     <a href="/">

@@ -13,8 +13,8 @@
         <input type="text" name="start_dato" th:value="${nyKontrakt.start_dato}" readonly> til
         <input type="text" name="slut_dato" th:value="${nyKontrakt.slut_dato}" readonly> <br><br>
         <input type="number" name="a_id" placeholder="Input ID her" required oninvalid="this.setCustomValidity('Indtast venligst et ID tal')" oninput="this.setCustomValidity('')">
-        <button type="button" id="tilbageKnap" onclick="tilbage()">Tilbage</button>
         <input type="submit" value="Videre" id="videreButton">
+        <button type="button" id="tilbageKnap" onclick="tilbage()">Tilbage</button>
     </form>
     <table>
         <thead>
