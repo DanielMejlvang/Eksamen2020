@@ -7,6 +7,7 @@
 </head>
 <body>
     <h2>Liste over kontrakter</h2>
+    <button type="button" id="tilbageKnap" onclick="tilbage()">Tilbage</button>
     <table>
         <thead>
         <tr>
@@ -51,6 +52,12 @@
             </tr>
         </tbody>
     </table>
+
+    <script>
+        function tilbage() {
+            window.history.back();
+        }
+    </script>
     <a href="/">
         <input type="image" src="NMRlogo.png" width="48" height="48" id="homepage">
     </a>

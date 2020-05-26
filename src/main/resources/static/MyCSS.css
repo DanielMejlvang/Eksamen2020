@@ -108,4 +108,20 @@ tr{
 #tilbageKnap{
     height: 25px;
     background-color: lightpink;
+    margin-bottom: 5px;
+}
+#seListeButton{
+    height: 50px;
+    width: 150px;
+    margin: 5px;
+}
+#videreButton{
+    height: 25px;
+    background-color: lightblue;
+    margin-bottom: 5px;
+}
+#gemButton{
+    height: 25px;
+    background-color: lightgreen;
+    margin-bottom: 5px;
 }

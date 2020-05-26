@@ -11,13 +11,19 @@
     <div id="opretForm">
         <form action="/kontraktAuto" method="get">
             <input type="hidden" name="ku_id" th:value="${nyKontrakt.ku_id}" readonly><br>
-            Start dato: <input type="text" name="start_dato" required><br>
-            Slut dato: <input type="text" name="slut_dato" required><br>
-            <input type="submit" value="Videre">
+            Start dato: <input type="date" name="start_dato" required oninvalid="this.setCustomValidity('Indtast venligst en gyldig dato YYYY-MM-DD')" oninput="this.setCustomValidity('')"><br>
+            Slut dato: <input type="date" name="slut_dato" required oninvalid="this.setCustomValidity('Indtast venligst en gyldig dato YYYY-MM-DD')" oninput="this.setCustomValidity('')"><br>
+            <button type="button" id="tilbageKnap" onclick="tilbage()">Tilbage</button>
+            <input type="submit" value="Videre" id="videreButton">
         </form>
     </div>
     <a href="/">
         <input type="image" src="NMRlogo.png" width="48" height="48" id="homepage">
     </a>
+    <script>
+        function tilbage() {
+            window.history.back();
+        }
+    </script>
 </body>
 </html>

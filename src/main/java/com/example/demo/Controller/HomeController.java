@@ -126,7 +126,7 @@ public class HomeController {
         return "kontrakter/opretKontraktKunde";
     }
 
-    @PostMapping("opretKontraktKunde")
+    @PostMapping("/opretKontraktKunde")
     public String opretKontraktKunde(@ModelAttribute Kunde kunde, Model model) {
         if (kundeService.tilfojKunde(kunde)) {
             Kontrakt nyKontrakt = new Kontrakt();
@@ -193,8 +193,7 @@ public class HomeController {
 
     @GetMapping("/sletKontrakt/{ko_id}")
     public String sletKontrakt(@PathVariable ("ko_id") int ko_id){
-        boolean slettetKontrakt = kontraktService.sletKontrakt(ko_id);
-        if(!slettetKontrakt){
+        if(kontraktService.sletKontrakt(ko_id)){
             return "redirect:/kontraktListe";
         } else{
             return "redirect:/kontraktListe";

@@ -12,8 +12,9 @@
         <input type="hidden" name="ku_id" th:value="${nyKontrakt.ku_id}" readonly>
         <input type="text" name="start_dato" th:value="${nyKontrakt.start_dato}" readonly> til
         <input type="text" name="slut_dato" th:value="${nyKontrakt.slut_dato}" readonly> <br><br>
-        <input type="number" name="a_id" placeholder="Input ID her">
-        <input type="submit" value="Videre">
+        <input type="number" name="a_id" placeholder="Input ID her" required oninvalid="this.setCustomValidity('Indtast venligst et ID tal')" oninput="this.setCustomValidity('')">
+        <button type="button" id="tilbageKnap" onclick="tilbage()">Tilbage</button>
+        <input type="submit" value="Videre" id="videreButton">
     </form>
     <table>
         <thead>
@@ -44,5 +45,10 @@
     <a href="/">
         <input type="image" src="NMRlogo.png" width="48" height="48" id="homepage">
     </a>
+    <script>
+        function tilbage() {
+            window.history.back();
+        }
+    </script>
 </body>
 </html>

@@ -18,8 +18,9 @@
 <h3>For at vælge eksisterende kunde, input et kunde ID i nendenstående felt og tryk "Videre"</h3>
 <h4>Liste over kundeinformationer</h4>
 <form action="/kontraktDato">
-    <input type="number" name="ku_id" placeholder="Input ID her">
-    <input type="submit" value="Videre">
+    <input type="number" name="ku_id" placeholder="Input ID her" required oninvalid="this.setCustomValidity('Indtast venligst et ID tal')" oninput="this.setCustomValidity('')">
+    <button type="button" id="tilbageKnap" onclick="tilbage()">Tilbage</button>
+    <input type="submit" value="Videre" id="videreButton">
 </form>
 <table>
     <thead>
@@ -54,5 +55,10 @@
 <a href="/">
     <input type="image" src="NMRlogo.png" width="48" height="48" id="homepage">
 </a>
+<script>
+    function tilbage() {
+        window.history.back();
+    }
+</script>
 </body>
 </html>
