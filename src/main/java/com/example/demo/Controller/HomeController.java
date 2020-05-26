@@ -190,4 +190,14 @@ public class HomeController {
         model.addAttribute("valgtAutocamper", autocamperService.findAutocamperMedId(kontraktService.findKontraktMedId(ko_id).getA_id()));
         return "kontrakter/kontraktDetaljer";
     }
+
+    @GetMapping("/sletKontrakt/{ko_id}")
+    public String sletKontrakt(@PathVariable ("ko_id") int ko_id){
+        boolean slettetKontrakt = kontraktService.sletKontrakt(ko_id);
+        if(!slettetKontrakt){
+            return "redirect:/kontraktListe";
+        } else{
+            return "redirect:/kontraktListe";
+        }
+    }
 }
