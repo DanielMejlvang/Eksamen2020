@@ -182,4 +182,13 @@ public class HomeController {
         model.addAttribute("kontraktliste", kontraktliste);
         return "kontrakter/kontraktListe";
     }
+
+    @GetMapping("/kontraktDetaljer/{ko_id}-{ku_id}-{a_id}")
+    public String kontraktDetaljer(@PathVariable ("ko_id") int ko_id, @PathVariable ("ku_id") int ku_id,
+                                   @PathVariable ("a_id") int a_id, Model model) {
+        model.addAttribute("nyKontrakt", kontraktService.findKontraktMedId(ko_id));
+        model.addAttribute("valgtKunde", kundeService.findKundeMedId(ku_id));
+        model.addAttribute("valgtAutocamper", autocamperService.findAutocamperMedId(a_id));
+        return "kontrakter/kontraktDetaljer";
+    }
 }
