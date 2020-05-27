@@ -16,11 +16,6 @@
                 <th>Efternavn</th>
                 <th>Telefon</th>
                 <th>Email</th>
-                <th>Kørekort nr.</th>
-                <th>Gade</th>
-                <th>Postnummer</th>
-                <th>By</th>
-                <th>Land</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -32,11 +27,6 @@
                 <td th:text="${kunde.efternavn}"></td>
                 <td th:text="${kunde.telefon}"></td>
                 <td th:text="${kunde.email}"></td>
-                <td th:text="${kunde.korekort}"></td>
-                <td th:text="${kunde.gade}"></td>
-                <td th:text="${kunde.postnummer}"></td>
-                <td th:text="${kunde.bynavn}"></td>
-                <td th:text="${kunde.land}"></td>
                 <td>
                     <a th:href="@{'/kundeDetaljer/'+${kunde.ku_id}}">
                         <button type="button" id="visButton">

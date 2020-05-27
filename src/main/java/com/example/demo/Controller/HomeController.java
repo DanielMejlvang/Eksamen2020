@@ -72,7 +72,7 @@ public class HomeController {
     @GetMapping("/kundeDetaljer/{ku_id}")
     public String kundeDetaljer(@PathVariable ("ku_id") int ku_id, Model model){
         model.addAttribute("valgtKunde", kundeService.findKundeMedId(ku_id));
-        return "home/kundeDetaljer";
+        return "kunder/kundeDetaljer";
     }
 
     //Sletter en kunde fra DB samt alle kontrakter de er tilknyttet
