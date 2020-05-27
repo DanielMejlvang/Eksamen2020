@@ -26,6 +26,12 @@ public class KontraktRepository {
         return template.queryForObject(sql, rm, id);
     }
 
+    public List<Kontrakt> findKontraktMedKundeId(int id){
+        String sql = "SELECT * FROM kontrakter WHERE ku_id = ?";
+        RowMapper<Kontrakt> rm = new BeanPropertyRowMapper<>(Kontrakt.class);
+        return template.query(sql, rm, id);
+    }
+
     public Boolean tilfojKontrakt(Kontrakt k){
         String sql = "INSERT INTO kontrakter (ku_id, a_id, start_dato, slut_dato, aflevering, afhentning, ko_kommentar, ko_pris, cykelstativ, barnesaede, sengetoj, picnicbord) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         return template.update(sql, k.getKu_id(), k.getA_id(), k.getStart_dato(), k.getSlut_dato(), k.getAflevering(), k.getAfhentning(), k.getKo_kommentar(), k.getKo_pris(), k.isCykelstativ(), k.isBarnesaede(), k.isSengetoj(), k.isPicnicbord()) > 0;

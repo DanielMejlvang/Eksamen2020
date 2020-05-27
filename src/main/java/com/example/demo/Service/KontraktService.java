@@ -10,21 +10,25 @@ import java.util.List;
 @Service
 public class KontraktService {
     @Autowired
-    KontraktRepository ks;
+    KontraktRepository kr;
 
     public List<Kontrakt> listKontrakter(){
-        return ks.listKontrakter();
+        return kr.listKontrakter();
     }
 
     public Kontrakt findKontraktMedId(int id){
-        return ks.findKontraktMedId(id);
+        return kr.findKontraktMedId(id);
     }
 
     public Boolean tilfojKontrakt(Kontrakt k){
-        return ks.tilfojKontrakt(k);
+        return kr.tilfojKontrakt(k);
     }
 
     public Boolean sletKontrakt(int id){
-        return ks.sletKontrakt(id);
+        return kr.sletKontrakt(id);
+    }
+
+    public List<Kontrakt> findKontrakterMedKundeId(int id){
+        return kr.findKontraktMedKundeId(id);
     }
 }

@@ -199,4 +199,18 @@ public class HomeController {
             return "redirect:/kontraktListe";
         }
     }
+
+    //Sletter en kunde fra DB samt alle kontrakter de er tilknyttet
+    @GetMapping("/sletKunde/{ku_id}")
+    public String sletKunde(@PathVariable ("ku_id") int ku_id){
+        List<Kontrakt> kontraktliste = kontraktService.findKontrakterMedKundeId(ku_id);
+
+        for (Kontrakt k: kontraktliste) {
+            kontraktService.sletKontrakt(k.getKo_id());
+        }
+        
+        if(kundeService.sletKunde(ku_id)){
+            return "redirect:/kundeliste";
+        } else return "redirect:/kundeliste";
+    }
 }
