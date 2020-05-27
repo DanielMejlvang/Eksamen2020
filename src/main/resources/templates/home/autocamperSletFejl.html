@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Fejl</title>
+    <link rel="stylesheet" type="text/css" href="MyCSS.css" th:href="@{/MyCSS.css}">
+    <style>
+        #autoSlet{
+            width: 150px;
+            height: 100px;
+            margin: 10px;
+            font-size: large;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body id="bodyStyle">
+
+    <h1 style="text-align: center; margin-top: 150px">Autocamperen er tilknyttet en eller flere kontrakter.</h1>
+
+    <a th:href="@{'/sletAutocamperKontrakt/'+${a_id}}">
+        <button id="autoSlet" type="button" style="float: right;background-color: crimson" onclick="return confirm('Er du sikker?\n(Dette vil slette alle tilknyttede kontrakter)')">
+            Slet alle tilknyttede kontrakter
+        </button>
+    </a>
+
+    <button type="button" id="autoSlet" onclick="tilbage()" style="float: left;background-color: cornflowerblue">
+        Gå tilbage
+    </button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3>Liste over tilknyttede kontrakter</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Kontrakt ID</th>
+            <th>Kunde ID</th>
+            <th>Autocamper ID</th>
+            <th>Start dato</th>
+            <th>Slut dato</th>
+            <th>Kommentar</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ko: ${kontraktListe}">
+            <td th:text="${ko.ko_id}"></td>
+            <td th:text="${ko.ku_id}"></td>
+            <td th:text="${ko.a_id}"></td>
+            <td th:text="${ko.start_dato}"></td>
+            <td th:text="${ko.slut_dato}"></td>
+            <td th:text="${ko.ko_kommentar}"></td>
+            <td>
+                <a th:href="@{'/kontraktDetaljer/'+${ko.ko_id}}">
+                    <button type="button" id="visButton">
+                        Vis mere
+                    </button>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+<script>
+    function tilbage() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>

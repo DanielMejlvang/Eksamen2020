@@ -12,6 +12,10 @@ public class AutocamperService {
     @Autowired
     AutocamperRepository ar;
 
+    public boolean erIKontrakt(int id){
+        return ar.erIKontrakt(id);
+    }
+
     public List<Autocamper> listAutocampere(){
         return ar.listAutocampere();
     }

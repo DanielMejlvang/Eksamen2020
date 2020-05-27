@@ -46,6 +46,12 @@
             <td th:text="${valgtKunde.land}"></td>
         </tr>
     </table>
+    <button type="button" id="tilbageKnap" onclick="tilbage()">Tilbage</button>
 </div>
+<script>
+    function tilbage() {
+        window.history.back();
+    }
+</script>
 </body>
 </html>

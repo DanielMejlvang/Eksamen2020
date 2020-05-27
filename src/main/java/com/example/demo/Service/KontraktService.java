@@ -31,4 +31,8 @@ public class KontraktService {
     public List<Kontrakt> findKontrakterMedKundeId(int id){
         return kr.findKontrakterMedKundeId(id);
     }
+
+    public List<Kontrakt> findKontrakterMedAutocamperId(int id){
+        return  kr.findKontrakterMedAutocamperId(id);
+    }
 }

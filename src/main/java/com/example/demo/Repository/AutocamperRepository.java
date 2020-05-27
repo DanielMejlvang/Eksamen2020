@@ -1,6 +1,7 @@
 package com.example.demo.Repository;
 
 import com.example.demo.Model.Autocamper;
+import com.example.demo.Model.Kontrakt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -13,6 +14,17 @@ import java.util.List;
 public class AutocamperRepository {
     @Autowired
     JdbcTemplate template;
+
+    public boolean erIKontrakt(int a_id){
+        String sql = "SELECT * FROM kontrakter WHERE a_id = ?";
+        RowMapper<Kontrakt> rm = new BeanPropertyRowMapper<>(Kontrakt.class);
+        List<Kontrakt> liste = template.query(sql, rm, a_id);
+        if(liste.size()==0){
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     //Metode der henter data om autocampere fra databasen
     public List<Autocamper> listAutocampere(){

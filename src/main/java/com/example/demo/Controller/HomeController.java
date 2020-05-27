@@ -122,6 +122,34 @@ public class HomeController {
         }
     }
 
+    @GetMapping("sletAutocamper/{a_id}")
+    public String sletAutocamper(@PathVariable ("a_id") int a_id, Model model, Autocamper autocamper){
+        model.addAttribute("autocamper", autocamper);
+        if (autocamperService.erIKontrakt(a_id)){
+            List<Kontrakt> ko_liste = kontraktService.findKontrakterMedAutocamperId(a_id);
+            model.addAttribute("kontraktListe", ko_liste);
+            return "home/autocamperSletFejl";
+        } else {
+            autocamperService.sletAutocamper(a_id);
+            return "redirect:/autocampere";
+        }
+    }
+
+    @GetMapping("sletAutocamperKontrakt/{a_id}")
+    public String sletAutocamperKontrakt(@PathVariable ("a_id") int a_id, Autocamper autocamper, Model model){
+        List<Kontrakt> liste = kontraktService.findKontrakterMedAutocamperId(a_id);
+
+        for (Kontrakt k: liste){
+            kontraktService.sletKontrakt(k.getKo_id());
+        }
+
+        if(autocamperService.sletAutocamper(a_id)){
+            return "redirect:/autocampere";
+        } else {
+            return "home/generelFejl";
+        }
+    }
+
     //Håndtering af tilbehør-sider
     @GetMapping("/tilbehor")
     public String tilbehor(@ModelAttribute Tilbehor tilbehor, Model model) {
