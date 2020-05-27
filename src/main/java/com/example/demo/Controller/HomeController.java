@@ -15,6 +15,7 @@ import java.util.List;
 @Controller
 @SessionAttributes("nyKontrakt")
 public class HomeController {
+    //Her Autowires alle vores service klasser
     @Autowired
     KundeService kundeService;
     @Autowired
@@ -36,6 +37,7 @@ public class HomeController {
         return "home/kunder";
     }
 
+    //Her vises en liste af kunder i DB
     @GetMapping("/kundeliste")
     public String kundeliste(Model model) {
         List<Kunde> kundeliste = kundeService.listKunder();
@@ -43,17 +45,20 @@ public class HomeController {
         return "kunder/kundeliste";
     }
 
+    //Her kan bruger udfylde data til en ny kunde
     @GetMapping("/opretKunde")
     public String opretKunde() {
         return "kunder/opretKunde";
     }
 
+    //Her oprettes Kunde objektet med de indtastede data
     @PostMapping("/opretKunde")
     public String opretKunde(Model model, @ModelAttribute Kunde kunde) {
         model.addAttribute("nyKunde", kunde);
         return "kunder/acceptKunde";
     }
 
+    //Her skal brugeren acceptere den indtastede data, og kunden bliver gemt i DB
     @PostMapping("/acceptKunde")
     public String acceptKunde(@ModelAttribute Kunde kunde) {
         if (kundeService.tilfojKunde(kunde)) {
@@ -71,17 +76,20 @@ public class HomeController {
         return "home/autocampere";
     }
 
+    //Her udfylder bruger data til en ny autocamper
     @GetMapping("/opretAutocamper")
     public String opretAutocamper(){
         return "autocampere/opretAutocamper";
     }
 
+    //Her oprettes et nyt Autocamper objekt med de indtastede data
     @PostMapping("/opretAutocamper")
     public String opretAutocamper(Model model, @ModelAttribute Autocamper autocamper){
         model.addAttribute("nyAutocamper", autocamper);
         return "autocampere/acceptAutocamper";
     }
 
+    //Her vises en opsumering af de indtastede data, som skal accepteres af bruger før autocamperen bliver oprettet i DB
     @PostMapping("/acceptAutocamper")
     public String acceptAutocamper(@ModelAttribute Autocamper autocamper){
         if(autocamperService.tilfojAutocamper(autocamper)) {
@@ -99,6 +107,7 @@ public class HomeController {
         return "home/tilbehor";
     }
 
+    //Her oprettes nyt tilbehør i DB
     @GetMapping("opretTilbehor")
     public String opretTilbehor(@ModelAttribute Tilbehor tilbehor) {
         if (tilbehorService.tilfojTilbehor(tilbehor)) {
@@ -114,6 +123,7 @@ public class HomeController {
         return "kontrakter/kontrakter";
     }
 
+    //Her starter brugeren med at oprette en ny kontrakt
     @GetMapping("/opretKontrakt")
     public String opretKontakt(@ModelAttribute Kunde kunde, Model model) {
         List<Kunde> kundeliste = kundeService.listKunder();
@@ -121,11 +131,13 @@ public class HomeController {
         return "kontrakter/opretKontrakt";
     }
 
+    //Hvis brugeren ønsker at oprette en ny kunde til en kontrakt ledes de hertil
     @GetMapping("/opretKontraktKunde")
     public String opretKontraktKunde() {
         return "kontrakter/opretKontraktKunde";
     }
 
+    //Her oprettes en ny kunde i DB der bindes til den kontrakt der er ved at blive oprettet
     @PostMapping("/opretKontraktKunde")
     public String opretKontraktKunde(@ModelAttribute Kunde kunde, Model model) {
         if (kundeService.tilfojKunde(kunde)) {
@@ -138,12 +150,14 @@ public class HomeController {
         }
     }
 
+    //Her vælges start og slut dato for udlejningsperioden
     @GetMapping("/kontraktDato")
     public String kontraktDato(@ModelAttribute Kontrakt kontrakt, Model model) {
         model.addAttribute("nyKontrakt", kontrakt);
         return "kontrakter/kontraktDato";
     }
 
+    //Her vælges en autocamper der skal tilknyttes kontrakten. Kun autocampere der er ledige i den valgte periode
     @GetMapping("/kontraktAuto")
     public String kontraktAuto(@ModelAttribute Kontrakt kontrakt, Model model) {
         model.addAttribute("nyKontrakt", kontrakt);
@@ -152,12 +166,14 @@ public class HomeController {
         return "kontrakter/kontraktAuto";
     }
 
+    //Side til at indtaste de sidste data i en kontrakt, tilbehør, kommentarer, etc
     @GetMapping("/kontraktData")
     public String kontraktData(@ModelAttribute Kontrakt kontrakt, Model model) {
         model.addAttribute("nyKontrakt", kontrakt);
         return "kontrakter/kontraktData";
     }
 
+    //Viser en detaljeret visning af den valgte kontrakt, kunde og autocamper som skal accepteres af bruger
     @GetMapping("/acceptKontrakt")
     public String acceptKontrakt(@ModelAttribute Kontrakt kontrakt, Model model) {
         kontrakt.udregnTotal(autocamperService.findAutocamperMedId(kontrakt.getA_id()).getA_pris());
@@ -167,6 +183,7 @@ public class HomeController {
         return "kontrakter/acceptKontrakt";
     }
 
+    //Opretter den kontrakt der er vist i DB
     @PostMapping("/acceptKontrakt")
     public String acceptKontrakt(@ModelAttribute Kontrakt kontrakt) {
         if (kontraktService.tilfojKontrakt(kontrakt)) {
@@ -176,6 +193,7 @@ public class HomeController {
         }
     }
 
+    //Viser en liste over kontrakter i DB
     @GetMapping("/kontraktListe")
     public String kontraktListe(Model model){
         List<Kontrakt> kontraktliste = kontraktService.listKontrakter();
@@ -183,6 +201,7 @@ public class HomeController {
         return "kontrakter/kontraktListe";
     }
 
+    //Laver en detaljeret visning af en kontrakt, kunde og autocamper
     @GetMapping("/kontraktDetaljer/{ko_id}")
     public String kontraktDetaljer(@PathVariable ("ko_id") int ko_id, Model model) {
         model.addAttribute("nyKontrakt", kontraktService.findKontraktMedId(ko_id));
@@ -191,6 +210,7 @@ public class HomeController {
         return "kontrakter/kontraktDetaljer";
     }
 
+    //Sletter en kontrakt fra DB
     @GetMapping("/sletKontrakt/{ko_id}")
     public String sletKontrakt(@PathVariable ("ko_id") int ko_id){
         if(kontraktService.sletKontrakt(ko_id)){
