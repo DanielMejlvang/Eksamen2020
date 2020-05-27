@@ -64,7 +64,7 @@ public class HomeController {
         if (kundeService.tilfojKunde(kunde)) {
             return "redirect:/kunder";
         } else {
-            return "/kunder";
+            return "home/opretFejl";
         }
     }
 
@@ -84,9 +84,11 @@ public class HomeController {
             kontraktService.sletKontrakt(k.getKo_id());
         }
 
-        if(kundeService.sletKunde(ku_id)){
+        if (kundeService.sletKunde(ku_id)) {
             return "redirect:/kundeliste";
-        } else {return "redirect:/kundeliste";}
+        } else {
+            return "home/generelFejl";
+        }
     }
 
     //Håndtering af autocampere-sider
@@ -237,7 +239,18 @@ public class HomeController {
         if(kontraktService.sletKontrakt(ko_id)){
             return "redirect:/kontraktListe";
         } else{
-            return "redirect:/kontraktListe";
+            return "home/generelFejl";
         }
+    }
+
+    //Fejl sider
+    @GetMapping("/opretFejl")
+    public String opretFejl() {
+        return "home/opretFejl";
+    }
+
+    @GetMapping("/generelFejl")
+    public String generelFejl() {
+        return "home/generelFejl";
     }
 }
