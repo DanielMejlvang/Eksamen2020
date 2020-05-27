@@ -26,7 +26,7 @@ public class KontraktRepository {
         return template.queryForObject(sql, rm, id);
     }
 
-    public List<Kontrakt> findKontraktMedKundeId(int id){
+    public List<Kontrakt> findKontrakterMedKundeId(int id){
         String sql = "SELECT * FROM kontrakter WHERE ku_id = ?";
         RowMapper<Kontrakt> rm = new BeanPropertyRowMapper<>(Kontrakt.class);
         return template.query(sql, rm, id);

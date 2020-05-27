@@ -7,49 +7,43 @@
 </head>
 <body id="bodyStyle">
 <h2>Detaljeret visning af kundeinformation</h2>
-<table>
-    <thead>
+<!--<table>
     <tr>
-        <th>ID</th>
-        <th>Fornavn</th>
-        <th>Efternavn</th>
-        <th>Telefon</th>
-        <th>Email</th>
-        <th>Kørekort nr.</th>
-        <th>Gade</th>
-        <th>Postnummer</th>
-        <th>By</th>
-        <th>Land</th>
-        <th></th>
+        <td>Fornavn</td>
+        <td th:text="${valgtKunde.fornavn}"></td>
     </tr>
-    </thead>
-    <tbody>
-    <tr th:each="kunde: ${kundeliste}">
-        <td th:text="${kunde.ku_id}" />
-        <td th:text="${kunde.fornavn}" />
-        <td th:text="${kunde.efternavn}" />
-        <td th:text="${kunde.telefon}" />
-        <td th:text="${kunde.email}" />
-        <td th:text="${kunde.korekort}" />
-        <td th:text="${kunde.gade}" />
-        <td th:text="${kunde.postnummer}" />
-        <td th:text="${kunde.bynavn}" />
-        <td th:text="${kunde.land}" />
-        <td>
-            <a th:href="@{'/sletKunde/'+${kunde.ku_id}}">
-                <button type="button" id = "sletButton" onclick = "return confirm('Er du sikker? (Dette vil også slette alle kontrakter de er tilknyttet)')">
-                    Slet
-                </button>
-            </a>
-            <br />
-            <a th:href="@{'/aendreKunde/'+${kunde.ku_id}}">
-                <button type="button" id = "aendreButton">
-                    Ændre
-                </button>
-            </a>
-        </td>
+    <tr>
+        <td>Efternavn</td>
+        <td th:text="${valgtKunde.efternavn}"></td>
     </tr>
-    </tbody>
-</table>
+    <tr>
+        <td>Telefon nr.</td>
+        <td th:text="${valgtKunde.telefon}"></td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td th:text="${valgtKunde.email}"></td>
+    </tr>
+    <tr>
+        <td>Kørekort nr.</td>
+        <td th:text="${valgtKunde.korekort}"></td>
+    </tr>
+    <tr>
+        <td>Gade</td>
+        <td th:text="${valgtKunde.gade}"></td>
+    </tr>
+    <tr>
+        <td>Postnummer</td>
+        <td th:text="${valgtKunde.postnummer}"></td>
+    </tr>
+    <tr>
+        <td>By</td>
+        <td th:text="${valgtKunde.bynavn}"></td>
+    </tr>
+    <tr>
+        <td>Land</td>
+        <td th:text="${valgtKunde.land}"></td>
+    </tr>
+</table>-->
 </body>
 </html>

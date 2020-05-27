@@ -29,6 +29,6 @@ public class KontraktService {
     }
 
     public List<Kontrakt> findKontrakterMedKundeId(int id){
-        return kr.findKontraktMedKundeId(id);
+        return kr.findKontrakterMedKundeId(id);
     }
 }
