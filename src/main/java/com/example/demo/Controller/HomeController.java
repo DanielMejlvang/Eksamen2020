@@ -68,6 +68,26 @@ public class HomeController {
         }
     }
 
+    @GetMapping("/kunder/kundeDetaljer/{ku_id}")
+    public String kundeDetaljer(@PathVariable ("ku_id") int ku_id){
+        Kunde kunde = kundeService
+        return "kunder/kundeDetaljer/";
+    }
+
+    //Sletter en kunde fra DB samt alle kontrakter de er tilknyttet
+    @GetMapping("/sletKunde/{ku_id}")
+    public String sletKunde(@PathVariable ("ku_id") int ku_id){
+        List<Kontrakt> kontraktliste = kontraktService.findKontrakterMedKundeId(ku_id);
+
+        for (Kontrakt k: kontraktliste) {
+            kontraktService.sletKontrakt(k.getKo_id());
+        }
+
+        if(kundeService.sletKunde(ku_id)){
+            return "redirect:/kundeliste";
+        } else {return "redirect:/kundeliste";}
+    }
+
     //Håndtering af autocampere-sider
     @GetMapping("/autocampere")
     public String Autocamper(@ModelAttribute Autocamper autocamper, Model model){
@@ -218,19 +238,5 @@ public class HomeController {
         } else{
             return "redirect:/kontraktListe";
         }
-    }
-
-    //Sletter en kunde fra DB samt alle kontrakter de er tilknyttet
-    @GetMapping("/sletKunde/{ku_id}")
-    public String sletKunde(@PathVariable ("ku_id") int ku_id){
-        List<Kontrakt> kontraktliste = kontraktService.findKontrakterMedKundeId(ku_id);
-
-        for (Kontrakt k: kontraktliste) {
-            kontraktService.sletKontrakt(k.getKo_id());
-        }
-        
-        if(kundeService.sletKunde(ku_id)){
-            return "redirect:/kundeliste";
-        } else return "redirect:/kundeliste";
     }
 }
