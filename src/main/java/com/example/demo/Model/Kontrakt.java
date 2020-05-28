@@ -50,7 +50,7 @@ public class Kontrakt {
     public void udregnTotal(double a_pris) {
         ko_pris *= 0.7;
         ko_pris += udregnPrisForTilbehor();
-        ko_pris += autocamperPris(a_pris);
+        ko_pris += udregnPrisForAutocamper(a_pris);
     }
 
     public double udregnPrisForTilbehor(){
@@ -72,7 +72,7 @@ public class Kontrakt {
         return (sum * this.daysBetween());
     }
 
-    public double autocamperPris(double a_pris) {
+    public double udregnPrisForAutocamper(double a_pris) {
         return a_pris * daysBetween();
     }
 

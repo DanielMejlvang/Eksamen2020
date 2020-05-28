@@ -1,5 +1,6 @@
 package com.example.demo.Repository;
 
+import com.example.demo.Model.Kontrakt;
 import com.example.demo.Model.Kunde;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -20,6 +21,17 @@ public class KundeRepository {
         //rowmapper putter data direkte ind i et objekt af Kunde.class
         RowMapper<Kunde> rm = new BeanPropertyRowMapper<>(Kunde.class);
         return template.query(sql, rm);
+    }
+
+    public boolean erIKontrakt(int ku_id){
+        String sql = "SELECT * FROM kontrakter WHERE ku_id = ?";
+        RowMapper<Kontrakt> rm = new BeanPropertyRowMapper<>(Kontrakt.class);
+        List<Kontrakt> liste = template.query(sql, rm, ku_id);
+        if (liste.size()==0){
+            return false;
+        } else {
+            return true;
+        }
     }
 
     //metode til at finde specifik kunde efter id

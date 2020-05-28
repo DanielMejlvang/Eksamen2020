@@ -14,6 +14,11 @@ public class KundeService {
     @Autowired
     KundeRepository kr;
 
+    //Metode til at undersøge om en kunde er tilknyttet en eller flere kontrakter
+    public boolean erIKontrakt(int id){
+        return kr.erIKontrakt(id);
+    }
+
     //metode til at hente data fra database
     public List<Kunde> listKunder() {
         return kr.listKunder();

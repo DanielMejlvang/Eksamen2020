@@ -75,16 +75,34 @@ public class HomeController {
         return "kunder/kundeDetaljer";
     }
 
-    //Sletter en kunde fra DB samt alle kontrakter de er tilknyttet
+    /*Her checkes om den kunde der skal slettes er tilknyttet en kontrakt
+    Hvis de er bliver man dirigeret videre til en ny side, ellers bliver
+    kunden bare slettet og man bliver redirected tilbage til kundelisten*/
     @GetMapping("/sletKunde/{ku_id}")
-    public String sletKunde(@PathVariable ("ku_id") int ku_id){
-        List<Kontrakt> kontraktliste = kontraktService.findKontrakterMedKundeId(ku_id);
+    public String sletKunde(@PathVariable ("ku_id") int ku_id, Model model, Kunde kunde){
+        model.addAttribute("kunde", kunde);
 
-        for (Kontrakt k: kontraktliste) {
+        if(kundeService.erIKontrakt(ku_id)){
+            List<Kontrakt> ko_liste = kontraktService.findKontrakterMedKundeId(ku_id);
+            model.addAttribute("kontraktListe", ko_liste);
+            return "kunder/kundeSletFejl";
+        } else if (kundeService.sletKunde(ku_id)){
+            return "redirect:/kundeliste";
+        } else {
+            return "home/generelFejl";
+        }
+    }
+
+    //Her slettes alle kontrakter der er tilknyttet en kunde, derefter slettes kunden
+    @GetMapping("sletKundeKontrakt/{ku_id}")
+    public String sletKundeKontrakt(@PathVariable ("ku_id") int ku_id, Kunde kunde, Model model){
+        List<Kontrakt> liste = kontraktService.findKontrakterMedKundeId(ku_id);
+
+        for (Kontrakt k: liste){
             kontraktService.sletKontrakt(k.getKo_id());
         }
 
-        if (kundeService.sletKunde(ku_id)) {
+        if (kundeService.sletKunde(ku_id)){
             return "redirect:/kundeliste";
         } else {
             return "home/generelFejl";
@@ -122,19 +140,23 @@ public class HomeController {
         }
     }
 
+    //Samme fremgangsmåde som at slette kunder. Forklaret på linje 78
     @GetMapping("sletAutocamper/{a_id}")
     public String sletAutocamper(@PathVariable ("a_id") int a_id, Model model, Autocamper autocamper){
         model.addAttribute("autocamper", autocamper);
+
         if (autocamperService.erIKontrakt(a_id)){
             List<Kontrakt> ko_liste = kontraktService.findKontrakterMedAutocamperId(a_id);
             model.addAttribute("kontraktListe", ko_liste);
             return "home/autocamperSletFejl";
-        } else {
-            autocamperService.sletAutocamper(a_id);
+        } else if (autocamperService.sletAutocamper(a_id)){
             return "redirect:/autocampere";
+        } else {
+            return "home/generelFejl";
         }
     }
 
+    //Samme fremgangsmåde som at slette kunder. Forklaret på linje 96
     @GetMapping("sletAutocamperKontrakt/{a_id}")
     public String sletAutocamperKontrakt(@PathVariable ("a_id") int a_id, Autocamper autocamper, Model model){
         List<Kontrakt> liste = kontraktService.findKontrakterMedAutocamperId(a_id);
