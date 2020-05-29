@@ -13,10 +13,10 @@
         <tr>
             <th>Kontrakt ID</th>
             <th>Kunde ID</th>
+            <th>Kundens efternavn</th>
             <th>Autocamper ID</th>
             <th>Start dato</th>
             <th>Slut dato</th>
-            <th>Kommentar</th>
             <th></th>
             <th></th>
         </tr>
@@ -25,10 +25,10 @@
             <tr th:each="ko: ${kontraktliste}">
                 <td th:text="${ko.ko_id}"></td>
                 <td th:text="${ko.ku_id}"></td>
+                <td th:text="${ko.ko_kommentar}"></td>
                 <td th:text="${ko.a_id}"></td>
                 <td th:text="${ko.start_dato}"></td>
                 <td th:text="${ko.slut_dato}"></td>
-                <td th:text="${ko.ko_kommentar}"></td>
                 <td>
                     <a th:href="@{'/kontraktDetaljer/'+${ko.ko_id}}">
                         <button type="button" id="visButton">

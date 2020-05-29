@@ -15,7 +15,7 @@ public class KontraktRepository {
     JdbcTemplate template;
 
     public List<Kontrakt> listKontrakter(){
-        String sql = "SELECT * FROM kontrakter";
+        String sql = "SELECT * FROM kontrakter ORDER BY start_dato";
         RowMapper<Kontrakt> rm = new BeanPropertyRowMapper<>(Kontrakt.class);
         return template.query(sql, rm);
     }
