@@ -271,7 +271,7 @@ public class HomeController {
     public String kontraktListe(Model model){
         List<Kontrakt> kontraktliste = kontraktService.listKontrakter();
         for(Kontrakt k : kontraktliste) {
-            k.setKo_kommentar(kundeService.findKundeMedId(k.getKo_id()).getEfternavn());
+            k.setKo_kommentar(kundeService.findKundeMedId(k.getKu_id()).getEfternavn());
         }
         model.addAttribute("kontraktliste", kontraktliste);
         return "kontrakter/kontraktListe";
