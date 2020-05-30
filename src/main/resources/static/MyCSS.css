@@ -70,11 +70,13 @@ tr{
     padding-top: 20px;
 }
 .venstre{
+    padding-left: 7px;
     left: 0;
-    border-right: 1px solid black;
 }
 .højre{
+    padding-left: 7px;
     right: 0;
+    border-left: 1px solid black;
 }
 #choice{
     background-color: pink;

@@ -6,7 +6,8 @@
     <link rel="stylesheet" type="text/css" th:href="@{/MyCSS.css}">
 </head>
 <body id="bodyStyle">
-<h2>Detaljeret visning af kundeinformation</h2>
+    <h2>Detaljeret visning af kundeinformation</h2>
+    <button type="button" id="tilbageKnap" onclick="tilbage()">Tilbage</button>
 <div class="row">
     <table style="width: 50%">
         <tr>
@@ -46,12 +47,13 @@
             <td th:text="${valgtKunde.land}"></td>
         </tr>
     </table>
-    <button type="button" id="tilbageKnap" onclick="tilbage()">Tilbage</button>
 </div>
+
 <script>
     function tilbage() {
         window.history.back();
     }
 </script>
+
 </body>
 </html>
