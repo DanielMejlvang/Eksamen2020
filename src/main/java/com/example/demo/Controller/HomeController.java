@@ -1,3 +1,8 @@
+//Kunde metoder - DMR
+//Autocamper metoder - ENA & MT
+//Tilbehor metoder - ENA & MT
+//Kontrakt metoder - DMR & ENA
+
 package com.example.demo.Controller;
 
 import com.example.demo.Model.*;
@@ -13,7 +18,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@SessionAttributes("nyKontrakt")
 public class HomeController {
     //Her Autowires alle vores service klasser
     @Autowired
@@ -140,7 +144,7 @@ public class HomeController {
         }
     }
 
-    //Samme fremgangsmåde som at slette kunder. Forklaret på linje 78
+    //Samme fremgangsmåde som at slette kunder. Forklaret på linje 85
     @GetMapping("sletAutocamper/{a_id}")
     public String sletAutocamper(@PathVariable ("a_id") int a_id, Model model, Autocamper autocamper){
         model.addAttribute("autocamper", autocamper);
@@ -156,7 +160,7 @@ public class HomeController {
         }
     }
 
-    //Samme fremgangsmåde som at slette kunder. Forklaret på linje 96
+    //Samme fremgangsmåde som at slette kunder. Forklaret på linje 101
     @GetMapping("sletAutocamperKontrakt/{a_id}")
     public String sletAutocamperKontrakt(@PathVariable ("a_id") int a_id, Autocamper autocamper, Model model){
         List<Kontrakt> liste = kontraktService.findKontrakterMedAutocamperId(a_id);

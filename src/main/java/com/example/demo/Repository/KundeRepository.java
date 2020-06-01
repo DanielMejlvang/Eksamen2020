@@ -1,3 +1,5 @@
+//Ansvarlig - DMR
+
 package com.example.demo.Repository;
 
 import com.example.demo.Model.Kontrakt;
@@ -23,6 +25,7 @@ public class KundeRepository {
         return template.query(sql, rm);
     }
 
+    //Returnerer en boolean der viser om en kunde er tilknyttet en kontrakt
     public boolean erIKontrakt(int ku_id){
         String sql = "SELECT * FROM kontrakter WHERE ku_id = ?";
         RowMapper<Kontrakt> rm = new BeanPropertyRowMapper<>(Kontrakt.class);
@@ -61,6 +64,7 @@ public class KundeRepository {
         return template.update(sql, id) > 0;
     }
 
+    //Returnerer en int der er det senest genererede
     public int nyesteId() {
         String sql = "SELECT ku_id FROM kunder ORDER BY ku_id DESC LIMIT 1";
         return template.queryForObject(sql, Integer.class);

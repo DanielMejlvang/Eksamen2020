@@ -1,3 +1,5 @@
+//Ansvarlig - MT, DMR & ENA
+
 package com.example.demo.Model;
 
 import javax.persistence.Entity;

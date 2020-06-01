@@ -1,3 +1,5 @@
+//Ansvarlig - ENA
+
 package com.example.demo.Repository;
 
 import com.example.demo.Model.Autocamper;
@@ -15,6 +17,7 @@ public class AutocamperRepository {
     @Autowired
     JdbcTemplate template;
 
+    //Metode der boolean der undersøger om autocamperen er tilknyttet en kontrakt
     public boolean erIKontrakt(int a_id){
         String sql = "SELECT * FROM kontrakter WHERE a_id = ?";
         RowMapper<Kontrakt> rm = new BeanPropertyRowMapper<>(Kontrakt.class);

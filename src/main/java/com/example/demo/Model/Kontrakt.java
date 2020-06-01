@@ -1,3 +1,5 @@
+//Ansvarlig DMR & ENA
+
 package com.example.demo.Model;
 
 
@@ -5,9 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -47,12 +46,14 @@ public class Kontrakt {
         this.picnicbord = picnicbord;
     }
 
+    //Her udregnes totalprisen for kontrakten. Den første linje hvor vi ganger med 0.7 er fordi at ko_pris, når vi kalder metoden er lig med det antal km der skal køres for pick up og/eller drop off af autocamper.
     public void udregnTotal(double a_pris) {
         ko_pris *= 0.7;
         ko_pris += udregnPrisForTilbehor();
         ko_pris += udregnPrisForAutocamper(a_pris);
     }
 
+    //Her lægges prisen for tilbehørene sammen og ganges med det antal dage kontrakten gælder
     public double udregnPrisForTilbehor(){
         double sum = 0;
 
@@ -72,10 +73,12 @@ public class Kontrakt {
         return (sum * this.daysBetween());
     }
 
+    //Her udregnes prisen for autocamperen ved at gange a_pris med det antal dage kontrakten varer
     public double udregnPrisForAutocamper(double a_pris) {
         return a_pris * daysBetween();
     }
 
+    //Her udregnes der hvor mange dage der er i kontrakten, dvs hvor mange dage mellem start og slut dato
     public double daysBetween(){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         long diff = 0;
@@ -90,6 +93,7 @@ public class Kontrakt {
         return (double) diff;
     }
 
+    //Resten er getters og setters
     public int getKo_id() {
         return ko_id;
     }

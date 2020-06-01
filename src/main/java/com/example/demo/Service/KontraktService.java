@@ -1,3 +1,5 @@
+//Ansvarlig - MT, DMR & ENA
+
 package com.example.demo.Service;
 
 import com.example.demo.Model.Kontrakt;
