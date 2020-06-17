@@ -290,6 +290,23 @@ public class HomeController {
         return "kontrakter/kontraktDetaljer";
     }
 
+    @GetMapping("kontraktDetaljer/kontraktAendre/{ko_id}")
+    public String kontraktAendre(@PathVariable ("ko_id") int ko_id, Model model) {
+        model.addAttribute("kontrakt", kontraktService.findKontraktMedId(ko_id));
+        List<Kunde> kundeliste = kundeService.listKunder();
+        model.addAttribute("kundeliste", kundeliste);
+        List<Autocamper> autocamperliste = autocamperService.listAutocampere();
+        model.addAttribute("autocamperliste", autocamperliste);
+        return "kontrakter/kontraktAendre";
+    }
+
+    @PostMapping("/opdaterKontrakt")
+    public String opdaterKontrakt(@ModelAttribute Kontrakt kontrakt) {
+        kontrakt.udregnTotal(autocamperService.findAutocamperMedId(kontrakt.getA_id()).getA_pris());
+        kontraktService.opdaterKontrakt(kontrakt);
+        return "redirect:kontraktDetaljer/"+kontrakt.getKo_id();
+    }
+
     //Sletter en kontrakt fra DB
     @GetMapping("/sletKontrakt/{ko_id}")
     public String sletKontrakt(@PathVariable ("ko_id") int ko_id){

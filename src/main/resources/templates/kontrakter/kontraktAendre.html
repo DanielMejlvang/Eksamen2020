@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Lav ændring</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/MyCSS.css}">
+</head>
+<body id="bodyStyle">
+    <div class="split venstre">
+        <form action="/opdaterKontrakt" method="post">
+            <h4>Kontraktinformation</h4>
+            <table>
+                <input type="hidden" name="ko_id" th:value="${kontrakt.ko_id}">
+                <tr>
+                    <td>Kunde ID</td>
+                    <td><input type="text" name="ku_id" th:value="${kontrakt.ku_id}"></td>
+                </tr>
+                <tr>
+                    <td>Autocamper ID</td>
+                    <td><input type="text" name="a_id" th:value="${kontrakt.a_id}"></td>
+                </tr>
+                <tr>
+                    <td>Start dato</td>
+                    <td><input type="date" name="start_dato" th:value="${kontrakt.start_dato}"></td>
+                </tr>
+                <tr>
+                    <td>Slut dato</td>
+                    <td><input type="date" name="slut_dato" th:value="${kontrakt.slut_dato}"></td>
+                </tr>
+                <tr>
+                    <td>Afleveringslokation</td>
+                    <td><input type="text" name="aflevering" th:value="${kontrakt.aflevering}"></td>
+                </tr>
+                <tr>
+                    <td>Afhentningslokation</td>
+                    <td><input type="text" name="afhentning" th:value="${kontrakt.afhentning}"></td>
+                </tr>
+                <tr>
+                    <td>Tillægskilometer</td>
+                    <td><input type="number" name="ko_pris" value="0" required></td>
+                </tr>
+                <tr>
+                    <td>Cykelstativ</td>
+                    <td><input type="checkbox" name="cykelstativ"></td>
+                </tr>
+                <tr>
+                    <td>Barnesæde</td>
+                    <td><input type="checkbox" name="barnesaede"></td>
+                </tr>
+                <tr>
+                    <td>Sengetøj</td>
+                    <td><input type="checkbox" name="sengetoj"></td>
+                </tr>
+                <tr>
+                    <td>Picnic bord + 4 stole</td>
+                    <td><input type="checkbox" name="picnicbord"></td>
+                </tr>
+                <tr>
+                    <td>Kommentar</td>
+                    <td><input type="text" name="ko_kommentar" th:value="${kontrakt.ko_kommentar}"></td>
+                </tr>
+            </table>
+            <h4>Er de indtastede informationer korrekte?</h4>
+            <input type="submit" value="Accept" id="gemButton" onclick="f()">
+            </form>
+    </div>
+    <div class="split højre">
+        <button onclick="kundeliste()">Vis kunder</button>
+        <button onclick="autocamperliste()">Vis autocampere</button>
+        <br>
+        <div id="kundetabel" style="display: none">
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Fornavn</th>
+                    <th>Efternavn</th>
+                    <th>Telefon</th>
+                    <th>Email</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="kunde: ${kundeliste}">
+                    <td th:text="${kunde.ku_id}"></td>
+                    <td th:text="${kunde.fornavn}"></td>
+                    <td th:text="${kunde.efternavn}"></td>
+                    <td th:text="${kunde.telefon}"></td>
+                    <td th:text="${kunde.email}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="autocampertabel" style="display: none">
+            <table style="font-size: smaller">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Type</th>
+                        <th>Mærke</th>
+                        <th>Model</th>
+                        <th>Kilometer kørt</th>
+                        <th>Sengepladser</th>
+                        <th>Nummerplade</th>
+                        <th>Pris per dag</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="autocamper: ${autocamperliste}">
+                        <td th:text="${autocamper.a_id}" />
+                        <td th:text="${autocamper.a_type}" />
+                        <td th:text="${autocamper.a_maerke}" />
+                        <td th:text="${autocamper.a_model}" />
+                        <td th:text="${autocamper.a_odometer}" />
+                        <td th:text="${autocamper.a_senge}" />
+                        <td th:text="${autocamper.a_nummerplade}" />
+                        <td th:text="${autocamper.a_pris}" />
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        function f() {
+            alert("Ændringer er blevet gemt!");
+        }
+        function kundeliste() {
+            var x = document.getElementById("kundetabel");
+            var y = document.getElementById("autocampertabel");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                y.style.display = "none";
+            } else {
+                x.style.display = "none";
+            }
+        }
+        function autocamperliste() {
+            var x = document.getElementById("autocampertabel");
+            var y = document.getElementById("kundetabel");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                y.style.display = "none";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

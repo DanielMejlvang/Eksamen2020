@@ -70,6 +70,9 @@
                 </tr>
             </table>
             <button type="button" id="tilbageKnap" onclick="tilbage()">Tilbage</button>
+            <a th:href="@{'kontraktAendre/'+${ko_id}}">
+                <button type="button" id="aendreButton">Lav ændring</button>
+            </a>
         </form>
     </div>
     <div class="accept">

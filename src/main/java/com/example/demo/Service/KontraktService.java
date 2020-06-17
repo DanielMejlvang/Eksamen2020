@@ -37,4 +37,8 @@ public class KontraktService {
     public List<Kontrakt> findKontrakterMedAutocamperId(int id){
         return  kr.findKontrakterMedAutocamperId(id);
     }
+
+    public void opdaterKontrakt(Kontrakt k) {
+        kr.opdaterKontrakt(k);
+    }
 }
