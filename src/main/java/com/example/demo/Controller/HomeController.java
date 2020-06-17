@@ -292,10 +292,11 @@ public class HomeController {
 
     @GetMapping("kontraktDetaljer/kontraktAendre/{ko_id}")
     public String kontraktAendre(@PathVariable ("ko_id") int ko_id, Model model) {
-        model.addAttribute("kontrakt", kontraktService.findKontraktMedId(ko_id));
+        Kontrakt kontrakt = kontraktService.findKontraktMedId(ko_id);
+        model.addAttribute("kontrakt", kontrakt);
         List<Kunde> kundeliste = kundeService.listKunder();
         model.addAttribute("kundeliste", kundeliste);
-        List<Autocamper> autocamperliste = autocamperService.listAutocampere();
+        List<Autocamper> autocamperliste = autocamperService.listFrieAutocampere(kontrakt.getStart_dato(), kontrakt.getSlut_dato());
         model.addAttribute("autocamperliste", autocamperliste);
         return "kontrakter/kontraktAendre";
     }

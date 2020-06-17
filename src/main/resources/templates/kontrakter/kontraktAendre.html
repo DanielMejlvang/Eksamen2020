@@ -61,7 +61,8 @@
                 </tr>
             </table>
             <h4>Er de indtastede informationer korrekte?</h4>
-            <input type="submit" value="Accept" id="gemButton" onclick="f()">
+            <input type="submit" value="Accept" id="gemButton" onclick="opdateringGemt()">
+            <button type="button" value="Tilbage" id="tilbageKnap" onclick="opdateringSlet()">Tilbage</button>
             </form>
     </div>
     <div class="split højre">
@@ -120,8 +121,12 @@
         </div>
     </div>
     <script>
-        function f() {
+        function opdateringGemt() {
             alert("Ændringer er blevet gemt!");
+        }
+        function opdateringSlet() {
+            alert("Ændringer blev ikke gemt!")
+            window.history.back();
         }
         function kundeliste() {
             var x = document.getElementById("kundetabel");

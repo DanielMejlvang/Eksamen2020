@@ -69,7 +69,9 @@
                     <td><input type="text" name="ko_pris" th:value="${nyKontrakt.ko_pris}" readonly></td>
                 </tr>
             </table>
-            <button type="button" id="tilbageKnap" onclick="tilbage()">Tilbage</button>
+            <a href="/kontraktListe">
+                <button type="button" id="tilbageKnap">Tilbage</button>
+            </a>
             <a th:href="@{'kontraktAendre/'+${ko_id}}">
                 <button type="button" id="aendreButton">Lav ændring</button>
             </a>
