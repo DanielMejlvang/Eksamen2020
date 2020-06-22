@@ -58,7 +58,11 @@ public class KontraktRepository {
 
     //opdater kontrakt i databasen
     public void opdaterKontrakt(Kontrakt k) {
-        String sql = "UPDATE kontrakter SET ku_id = ?, a_id = ?, start_dato = ?, slut_dato = ?, aflevering = ?, afhentning = ?, ko_kommentar = ?, ko_pris = ?, cykelstativ = ?, barnesaede = ?, sengetoj = ?, picnicbord = ? WHERE ko_id = ?";
-        template.update(sql, k.getKu_id(), k.getA_id(), k.getStart_dato(), k.getSlut_dato(), k.getAflevering(), k.getAfhentning(), k.getKo_kommentar(), k.getKo_pris(), k.isCykelstativ(), k.isBarnesaede(), k.isSengetoj(), k.isPicnicbord(), k.getKo_id());
+        String sql = "UPDATE kontrakter SET ku_id = ?, a_id = ?, start_dato = ?, slut_dato = ?, " +
+                     "aflevering = ?, afhentning = ?, ko_kommentar = ?, ko_pris = ?, cykelstativ = ?, " +
+                     "barnesaede = ?, sengetoj = ?, picnicbord = ? WHERE ko_id = ?";
+        template.update(sql, k.getKu_id(), k.getA_id(), k.getStart_dato(), k.getSlut_dato(), k.getAflevering(),
+                        k.getAfhentning(), k.getKo_kommentar(), k.getKo_pris(), k.isCykelstativ(), k.isBarnesaede(),
+                        k.isSengetoj(), k.isPicnicbord(), k.getKo_id());
     }
 }

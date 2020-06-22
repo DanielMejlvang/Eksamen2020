@@ -125,27 +125,25 @@
             alert("Ændringer er blevet gemt!");
         }
         function opdateringSlet() {
-            alert("Ændringer blev ikke gemt!")
+            alert("Ændringer blev ikke gemt!");
             window.history.back();
         }
         function kundeliste() {
-            var x = document.getElementById("kundetabel");
-            var y = document.getElementById("autocampertabel");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-                y.style.display = "none";
+            var kundeliste = document.getElementById("kundetabel");
+            if (kundeliste.style.display === "none") {
+                kundeliste.style.display = "block";
+                document.getElementById("autocampertabel").style.display = "none";
             } else {
-                x.style.display = "none";
+                kundeliste.style.display = "none";
             }
         }
         function autocamperliste() {
-            var x = document.getElementById("autocampertabel");
-            var y = document.getElementById("kundetabel");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-                y.style.display = "none";
+            var autocamperliste = document.getElementById("autocampertabel");
+            if (autocamperliste.style.display === "none") {
+                autocamperliste.style.display = "block";
+                document.getElementById("kundetabel").style.display = "none";
             } else {
-                x.style.display = "none";
+                autocamperliste.style.display = "none";
             }
         }
     </script>

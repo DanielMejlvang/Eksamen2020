@@ -284,9 +284,10 @@ public class HomeController {
     //Laver en detaljeret visning af en kontrakt, kunde og autocamper
     @GetMapping("/kontraktDetaljer/{ko_id}")
     public String kontraktDetaljer(@PathVariable ("ko_id") int ko_id, Model model) {
-        model.addAttribute("nyKontrakt", kontraktService.findKontraktMedId(ko_id));
-        model.addAttribute("valgtKunde", kundeService.findKundeMedId(kontraktService.findKontraktMedId(ko_id).getKu_id()));
-        model.addAttribute("valgtAutocamper", autocamperService.findAutocamperMedId(kontraktService.findKontraktMedId(ko_id).getA_id()));
+        Kontrakt kontrakt = kontraktService.findKontraktMedId(ko_id);
+        model.addAttribute("nyKontrakt", kontrakt);
+        model.addAttribute("valgtKunde", kundeService.findKundeMedId(kontrakt.getKu_id()));
+        model.addAttribute("valgtAutocamper", autocamperService.findAutocamperMedId(kontrakt.getA_id()));
         return "kontrakter/kontraktDetaljer";
     }
 
