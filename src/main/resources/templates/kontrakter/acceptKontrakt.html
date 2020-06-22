@@ -64,7 +64,7 @@
                     </tr>
                 </table>
                 <h4>Er de indtastede informationer korrekte?</h4>
-                <input type="submit" value="Accept" id="gemButton">
+                <input type="submit" value="Accept" id="gemButton" onclick="gemt()">
                 <a href="/opretKontrakt">
                     <button type="button" id="tilbageKnap" onclick="return confirm('Er du sikker?')">
                         Tilbage
@@ -151,5 +151,10 @@
     <a href="/">
         <input type="image" src="NMRlogo.png" width="48" height="48" id="homepage">
     </a>
+    <script>
+        function gemt() {
+            alert('Kontrakten er gemt');
+        }
+    </script>
 </body>
 </html>

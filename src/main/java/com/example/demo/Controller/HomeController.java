@@ -202,7 +202,7 @@ public class HomeController {
 
     //Her starter brugeren med at oprette en ny kontrakt
     @GetMapping("/opretKontrakt")
-    public String opretKontakt(@ModelAttribute Kunde kunde, Model model) {
+    public String opretKontakt(Model model) {
         List<Kunde> kundeliste = kundeService.listKunder();
         model.addAttribute("kundeliste", kundeliste);
         return "kontrakter/opretKontrakt";
