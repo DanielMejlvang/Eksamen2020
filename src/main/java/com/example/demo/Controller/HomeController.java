@@ -85,7 +85,6 @@ public class HomeController {
     @GetMapping("/sletKunde/{ku_id}")
     public String sletKunde(@PathVariable ("ku_id") int ku_id, Model model, Kunde kunde){
         model.addAttribute("kunde", kunde);
-
         if(kundeService.erIKontrakt(ku_id)){
             List<Kontrakt> ko_liste = kontraktService.findKontrakterMedKundeId(ku_id);
             model.addAttribute("kontraktListe", ko_liste);
