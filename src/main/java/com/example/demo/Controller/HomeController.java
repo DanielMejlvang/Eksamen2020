@@ -83,8 +83,7 @@ public class HomeController {
     Hvis de er bliver man dirigeret videre til en ny side, ellers bliver
     kunden bare slettet og man bliver redirected tilbage til kundelisten*/
     @GetMapping("/sletKunde/{ku_id}")
-    public String sletKunde(@PathVariable ("ku_id") int ku_id, Model model, Kunde kunde){
-        model.addAttribute("kunde", kunde);
+    public String sletKunde(@PathVariable ("ku_id") int ku_id, Model model){
         if(kundeService.erIKontrakt(ku_id)){
             List<Kontrakt> ko_liste = kontraktService.findKontrakterMedKundeId(ku_id);
             model.addAttribute("kontraktListe", ko_liste);
@@ -98,7 +97,7 @@ public class HomeController {
 
     //Her slettes alle kontrakter der er tilknyttet en kunde, derefter slettes kunden
     @GetMapping("sletKundeKontrakt/{ku_id}")
-    public String sletKundeKontrakt(@PathVariable ("ku_id") int ku_id, Kunde kunde, Model model){
+    public String sletKundeKontrakt(@PathVariable ("ku_id") int ku_id){
         List<Kontrakt> liste = kontraktService.findKontrakterMedKundeId(ku_id);
 
         for (Kontrakt k: liste){
