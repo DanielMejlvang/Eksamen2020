@@ -13,11 +13,11 @@
                 <input type="hidden" name="ko_id" th:value="${kontrakt.ko_id}">
                 <tr>
                     <td>Kunde ID</td>
-                    <td><input type="text" name="ku_id" th:value="${kontrakt.ku_id}"></td>
+                    <td><input type="number" name="ku_id" th:value="${kontrakt.ku_id}"></td>
                 </tr>
                 <tr>
                     <td>Autocamper ID</td>
-                    <td><input type="text" name="a_id" th:value="${kontrakt.a_id}"></td>
+                    <td><input type="number" name="a_id" th:value="${kontrakt.a_id}"></td>
                 </tr>
                 <tr>
                     <td>Start dato</td>
@@ -63,7 +63,7 @@
             <h4>Er de indtastede informationer korrekte?</h4>
             <input type="submit" value="Accept" id="gemButton" onclick="opdateringGemt()">
             <button type="button" value="Tilbage" id="tilbageKnap" onclick="opdateringSlet()">Tilbage</button>
-            </form>
+        </form>
     </div>
     <div class="split højre">
         <button onclick="kundeliste()">Vis kunder</button>
